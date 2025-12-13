@@ -3,38 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 关键：声明支持深色/浅色模式 -->
-    <meta name="color-scheme" content="light dark">
     <title>旅冬亦的网页</title>
     <style>
-        /* --- 定义深色/浅色模式变量 --- */
-        :root {
-            /* 浅色模式默认值 */
-            --bg-color: #ffffff;
-            --text-color: #333333;
-            --subtle-color: #7f8c8d;
-            --border-color: #eee;
-            --card-bg: #fff;
-            --section-bg: #f9f9f9;
-            --link-color: #3498db;
-            --hover-color: #2980b9;
-            --shadow: 0 0 15px rgba(0,0,0,0.1);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                /* 深色模式覆盖 */
-                --bg-color: #121212;
-                --text-color: #e0e0e0;
-                --subtle-color: #9aa0a6;
-                --border-color: #333333;
-                --card-bg: #1e1e1e;
-                --section-bg: #2d2d2d;
-                --link-color: #4A6BA6;
-                --hover-color: #4A6BA6;
-                --shadow: 0 0 15px rgba(0,0,0,0.3);
-            }
-        }
+     @font-face{
+     font-family: 'MyCustomFont';
+     src: url('Font/Font.ttf') format('truetype');
+     font-weight: normal;
+     font-style: normal;
+     font-display: swap;
+    }
 
         /* --- 基础样式重置 --- */
         * {
@@ -47,45 +24,43 @@
             line-height: 1;
             margin: 0;
             padding: 20px;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
+            color: #333;
         }
 
         /* --- 容器 --- */
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: var(--card-bg);
+            background: #fff;
             padding: 40px;
             border-radius: 10px;
-            box-shadow: var(--shadow);
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
         }
 
         /* --- 头部 --- */
         header {
             text-align: center;
             margin-bottom: 40px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid #eee;
             padding-bottom: 20px;
         }
 
         .avatar {
             width: 120px;
             height: 120px;
-            border-radius: 50%;
+            border-radius: 100%;
             object-fit: cover;
-            border: 2.5px solid #f0f0f0;
+            border: 5px solid #f0f0f0;
             margin-bottom: 15px;
         }
 
         h1 {
-            color: #4A6BA6;
+            color: #2c3e50;
             margin-bottom: 10px;
         }
 
         .title {
-            color: var(--subtle-color);
+            color: #7f8c8d;
             font-size: 1.1em;
             text-align: center;
         }
@@ -93,14 +68,11 @@
         /* --- 内容区块 --- */
         section {
             margin-bottom: 30px;
-            background: var(--section-bg);
-            padding: 20px;
-            border-radius: 8px;
         }
 
         h2 {
-            color: #4A6BA6;
-            border-left: 5px solid var(--link-color);
+            color: #2980b9;
+            border-left: 5px solid #3498db;
             padding-left: 15px;
             margin-bottom: 15px;
             font-size: 1.3em;
@@ -124,8 +96,131 @@
 
         .contact-list strong {
             width: 80px;
-            color: var(--subtle-color);
+            color: #555;
         }
+
+        .icon {
+            margin-right: 10px;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        /* --- 链接样式 --- */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        /* --- 页脚 --- */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #999;
+            font-size: 0.9em;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        /* --- 响应式设计 --- */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .avatar {
+                width: 90px;
+                height: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- 头部区域 -->
+        <header>
+            <!-- 这里是头像，你需要准备一张图片 -->
+            <img src="1716549060686.jpg" alt="头像加载中" class="avatar">
+            <h1>旅冬亦</h1>
+            <p class="title">半匹红纱一丈绫华</p>
+        </header>
+
+        <!-- 关于我 -->
+        <section>
+            <h2>👋 关于我</h2>
+            <p>
+                你好！我是<strong>旅冬亦</strong>。
+                这是我的个人网站。
+            </p>
+            <p>
+                网站正在<strong>测试</strong>中，内容仅供预览
+            </p>
+        </section>
+
+        <!-- 经历或技能 (可选) -->
+        <section>
+            <h2>💼 经历与技能</h2>
+            <p>
+                完善中
+            </p>
+        </section>
+
+        <!-- 联系方式 -->
+        <section>
+            <h2>📞 联系方式</h2>
+            <ul class="contact-list">
+                <!-- 邮箱 -->
+                <li>
+                    <strong><span class="icon">📧</span> 邮箱:</strong> 
+                    <a href="mailto:2330785100@qq.com">2330785100@qq.com</a>
+                </li>
+                
+                <!-- 电话/微信 -->
+                <li>
+                    <strong><span class="icon">📱</span> 微信:</strong> 
+                    lxj13533251583
+                </li>
+                
+                <!-- GitHub/GitLab -->
+                <li>
+                    <strong><span class="icon">💻</span> 仓库:</strong> 
+                    <a href="https://github.com/lxj13533251583" target="_blank">github.com/lxj13533251583</a>
+                </li>
+                
+                <!-- 个人博客/其他网站 -->
+                <li>
+                    <strong><span class="icon">🌐</span> 网站:</strong> 
+                    <a href="https://lxj13533251583.github.io/ldy/" target="_blank">lxj13533251583.github.io/ldy/</a>
+                </li>
+                
+                <!-- 地址 -->
+                <li>
+                    <strong><span class="icon">🏢</span> 地址:</strong> 
+                    中国
+                </li>
+            </ul>
+        </section>
+
+        <!-- 页脚 -->
+        <footer>
+            <p>© <span id="year"></span> 旅冬亦 版权所有</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // 自动更新页脚年份
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>        }
 
         .icon {
             margin-right: 10px;

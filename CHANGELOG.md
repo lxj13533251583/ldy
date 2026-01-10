@@ -45,8 +45,3 @@
 ---
 <div align="center">
     <p>© <span id="year"></span> 旅冬亦 版权所有</p>
-    <script>
-        // 自动更新页脚年份
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-</div>

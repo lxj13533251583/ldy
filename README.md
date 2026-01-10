@@ -42,6 +42,9 @@
   - 自定义字体
 - **JavaScript**：年份自动更新
 
+## 📝 更新日志
+- https://lxj13533251583.github.io/ldy/changelog.html
+
 ***
 <div align="center">
   &copy; 2026 旅冬亦 版权所有

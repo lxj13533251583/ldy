@@ -44,4 +44,4 @@
 
 ---
 <div align="center">
-    <p>© <span id="year"></span> 旅冬亦 版权所有</p>
+    <p>© <span id="year"></span>2026 旅冬亦 版权所有</p>

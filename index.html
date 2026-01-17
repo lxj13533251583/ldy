@@ -7,22 +7,10 @@
     <!-- 基础 Favicon -->  
     <link rel="icon" type="Picture/profile.jpg" href="Picture/profile.jpg">  
 
-    <!--
-    /* 高清 PNG 版本（现代浏览器） */
-    <link rel="icon" type="profile.jpeg" sizes="32x32" href="profile.jpeg">  
-    <link rel="icon" type="profile.jpeg" sizes="48x48" href="profile.jpeg">  
-
-    /* iOS 设备添加到主屏幕图标 */
-    <link rel="apple-touch-icon" href="profile.jpeg">  
-
-    /* SVG 矢量图标（可选，支持现代浏览器） */
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">  
-    -->
-
     <style>
      @font-face{
      font-family: 'MyCustomFont';
-     src: url('Font/Mi.ttf') format('truetype');
+     src: url('Font/MiSans.ttf') format('truetype');
      font-weight: normal;
      font-style: normal;
      font-display: swap;
@@ -40,6 +28,39 @@
             margin: 0;
             padding: 20px;
             color: #333;
+            background-color: #f9fafb;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* --- 深色模式 --- */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #e0e0e0;
+            }
+            .container {
+                background: #1e1e1e;
+            }
+            h1, h2 {
+                color: #76D1FF;
+            }
+            .contact-list strong {
+                color: #aaaaaa;
+            }
+            a {
+                color: #76D1FF;
+            }
+            a:hover {
+                color: #a5e4ff;
+            }
+            .social-btn {
+                background: #2d2d2d;
+                border: 1px solid #333333;
+            }
+            .social-btn:hover {
+                background: rgba(118, 209, 255, 0.15);
+                color: #76D1FF;
+            }
         }
 
         /* --- 容器 --- */
@@ -50,6 +71,7 @@
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            margin-top: 20px;
         }
 
         /* --- 头部 --- */
@@ -63,22 +85,22 @@
         .avatar {
             width: 120px;
             height: 120px;
-            border-radius: 50%;
+            border-radius: 12px;
             object-fit: cover;
             border: 2.5px solid #f0f0f0;
             margin-bottom: 15px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 使用更有弹性的缓动函数 */
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* 添加轻微阴影增加层次感 */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .avatar:hover {
-            transform: scale(1.08); /* 均匀放大 */
-            border-color: #3498db; /* 边框变色 */
-            box-shadow: 0 8px 15px rgba(52, 152, 219, 0.4); /* 阴影变大变蓝 */
+            transform: scale(1.08);
+            border-color: #00668B;
+            box-shadow: 0 8px 15px rgba(0, 102, 139, 0.4);
         }
 
         h1 {
-            color: #2c3e50;
+            color: #00668B;
             margin-bottom: 10px;
         }
 
@@ -94,8 +116,8 @@
         }
 
         h2 {
-            color: #2980b9;
-            border-left: 5px solid #3498db;
+            color: #00668B;
+            border-left: 5px solid #00668B;
             padding-left: 15px;
             margin-bottom: 15px;
             font-size: 1.3em;
@@ -109,12 +131,15 @@
         /* --- 联系方式列表 --- */
         .contact-list {
             list-style: none;
+            padding-left: 0;
         }
 
         .contact-list li {
             margin-bottom: 15px;
             display: flex;
             align-items: center;
+            white-space: nowrap;
+            word-break: break-all;
         }
 
         .contact-list strong {
@@ -124,33 +149,66 @@
 
         .icon {
             margin-right: 10px;
-            color: #3498db;
+            color: #00668B;
             font-weight: bold;
+            flex-shrink: 0;
         }
 
         /* --- 链接样式 --- */
         a {
-            color: #3498db;
+            color: #00668B;
             text-decoration: none;
             transition: color 0.3s;
         }
 
         a:hover {
-            color: #2980b9;
+            color: #005577;
             text-decoration: underline;
+        }
+
+        /* --- 社交媒体网格 --- */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            border-radius: 12px;
+            background: #f8f9fa;
+            border: 1px solid #eaeef5;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-weight: bold;
+        }
+
+        .social-btn:hover {
+            background: #e6f4ff;
+            transform: translateY(-2px);
+            color: #00668B;
         }
 
         /* --- 页脚 --- */
         footer {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 0px;
             color: #999;
-            font-size: 0.9em 
+            font-size: 0.9em;
             padding-top: 20px;
         }
 
         /* --- 响应式设计 --- */
         @media (max-width: 600px) {
+            .contact-list li {
+                white-space: normal;
+                padding-left: 0;
+            }
             footer p {
                 font-size: 0.8em;
                 text-align: center;
@@ -162,6 +220,11 @@
             .avatar {
                 width: 90px;
                 height: 90px;
+            }
+            
+            /* 修复竖屏缩进问题 */
+            .contact-list li {
+                padding-left: 0;
             }
         }
     </style>
@@ -232,13 +295,33 @@
                 </li>
             </ul>
         </section>
+        
+        <!-- 社交媒体 -->
+        <section>
+            <h2>📱 社交媒体</h2>
+            <div class="social-grid">
+                <!-- GitHub -->
+                <a href="https://github.com/lxj13533251583" class="social-btn" target="_blank">
+                    GitHub
+                </a>
+                
+                <!-- 微博 -->
+                <a href="https://weibo.com/yourid" class="social-btn" target="_blank">
+                    微博
+                </a>
+                
+                <!-- Bilibili -->
+                <a href="https://space.bilibili.com/yourid" class="social-btn" target="_blank">
+                    Bilibili
+                </a>
+            </div>
+        </section>
+    </div>
 
-        <!-- 页脚 -->
-        <footer>
-    </div>
-            <p style="text-align: center;">© <span id="year"></span> 旅冬亦 版权所有</p>
-</footer>
-    </div>
+    <!-- 页脚移出卡片 -->
+    <footer>
+        <p style="text-align: center;">© <span id="year"></span> 旅冬亦 版权所有</p>
+    </footer>
 
     <script>
         // 自动更新页脚年份

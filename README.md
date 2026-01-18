@@ -49,7 +49,7 @@
 - 在线版：https://github.com/lxj13533251583/ldy/releases/tag/Online/
 
 - **离线版Offline**：打包网页源文件至软件，可离线查看，但更新信息需要在本链接下载。
-- 离线版：https://github.com/lxj13533251583/ldy/releases/tag/Offline/
+- 离线版(构建中)：https://github.com/lxj13533251583/ldy/releases/tag/Offline/
 
 ## 📝 更新日志
 - https://lxj13533251583.github.io/ldy/changelog.html
@@ -58,7 +58,7 @@
 1.  **项目性质**：本项目为个人技术练习与作品展示，非商业用途，不代表任何官方立场。
 2.  **版权归属**：
     *   字体使用 `MiSans` ，许可协议见链接页尾：https://hyperos.mi.com/font/download
-    *   头像主体归 `miHoYo` 版权所有，侵权联系删除。
+    *   头像原创，未经允许禁止商用，如需个人使用请告知作者。
 3.  **责任限制**：作者不对因使用本项目代码或访问网站内容导致的任何损失承担责任。
 4.  **隐私说明**：本网站为静态页面，不收集用户隐私数据。
 

@@ -46,7 +46,7 @@
 
  本网页支持**Apk**文件，提供两种类型：<br>
 - **在线版Online**：即网页映射至软件，网页和软件同步更新信息。
-- 在线版：https://github.com/lxj13533251583/ldy/releases/tag/Online/
+- 在线版(已弃项)：~~https://github.com/lxj13533251583/ldy/releases/tag/Online/~~
 
 - **离线版Offline**：打包网页源文件至软件，可离线查看，但更新信息需要在本链接下载。
 - 离线版(构建中)：https://github.com/lxj13533251583/ldy/releases/tag/Offline/

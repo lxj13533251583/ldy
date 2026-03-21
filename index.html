@@ -16,7 +16,116 @@
      font-display: swap;
     }
 
-        /* --- 基础样式重置 --- */
+        @font-face { font-family: 'CustomFont1'; src: url('/Font/MiSans.ttf') format('truetype'); }
+        @font-face { font-family: 'CustomFont2'; src: url('/Font/小米兰亭Pro.ttf') format('truetype'); }
+        @font-face { font-family: 'CustomFont3'; src: url('/Font/HarmonyOS Sans.ttf') format('truetype'); }
+        @font-face { font-family: 'CustomFont4'; src: url('/Font/OPPO Sans.ttf') format('truetype'); }
+        @font-face { font-family: 'CustomFont5'; src: url('/Font/汉仪文黑.ttf') format('truetype'); }
+        @font-face { font-family: 'CustomFont6'; src: url('/Font/汉仪旗黑.ttf') format('truetype'); }
+
+        .font-selector-container {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          margin: 24px 0 16px;
+          z-index: 1001
+        }
+
+        .font-toggle-btn {
+          width: auto;
+          padding: 8px 12px;
+          background: #00668B;
+          color: white;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 14px;
+          transition: background 0.2s;
+          z-index:1002;
+          position: relative;
+          font-family: inherit;
+        }
+
+        .font-toggle-btn:hover {
+          background: #005a7a;
+        }
+
+        .font-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.4);
+          opacity: 0;
+          visibility: hidden;
+          z-index: 999;
+          transition: opacity 0.2s ease;
+        }
+
+        .font-overlay.show {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .font-dropdown {
+          position: absolute;
+          bottom: 100%;
+          left: 50%;
+          transform: translateX(-50%) translateY(20px) scale(0.8);
+          width: 180px;
+          background: white;
+          border-radius: 8px;
+          box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+          overflow: hidden;
+          z-index: 1003;
+          opacity: 0;
+          transition: 
+            opacity 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+            transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .font-dropdown.show {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0) scale(1);
+        }
+
+        .font-option {
+          padding: 10px 16px;
+          cursor: pointer;
+          font-size: 14px;
+          transition: background 0.2s;
+          text-align: center;
+          position: relative;
+        }
+
+        .check-icon {
+          position: absolute;
+          right: 16px;
+          opacity: 0;
+          color: #00668B;
+          font-weight: bold;
+          transition: opacity 0.2s;
+        }
+
+        .font-option.selected .check-icon {
+          opacity: 1;
+        }
+
+        .font-option:hover {
+          background: #f0f8ff;
+        }
+
+        body.use-font1 { font-family: 'CustomFont1', "PingFang SC", "Microsoft YaHei", sans-serif; }
+        body.use-font2 { font-family: 'CustomFont2', "PingFang SC", "Microsoft YaHei", sans-serif; }
+        body.use-font3 { font-family: 'CustomFont3', "PingFang SC", "Microsoft YaHei", sans-serif; }
+        body.use-font4 { font-family: 'CustomFont4', "PingFang SC", "Microsoft YaHei", sans-serif; }
+        body.use-font5 { font-family: 'CustomFont5', "PingFang SC", "Microsoft YaHei", sans-serif; }
+        body.use-font6 { font-family: 'CustomFont6', "PingFang SC", "Microsoft YaHei", sans-serif; }
+        body.use-system { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; }
+
+        /* 基础样式重置 */
         * {
             box-sizing: border-box;
         }
@@ -32,7 +141,7 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* --- 深色模式 --- */
+        /* 深色模式 */
         @media (prefers-color-scheme: dark) {
             body {
                 background-color: #121212;
@@ -63,7 +172,6 @@
             }
         }
 
-        /* --- 容器 --- */
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -74,7 +182,6 @@
             margin-top: 20px;
         }
 
-        /* --- 头部 --- */
         header {
             text-align: center;
             margin-bottom: 40px;
@@ -110,7 +217,6 @@
             text-align: center;
         }
 
-        /* --- 内容区块 --- */
         section {
             margin-bottom: 30px;
         }
@@ -128,7 +234,6 @@
             text-align: justify;
         }
 
-        /* --- 联系方式列表 --- */
         .contact-list {
             list-style: none;
             padding-left: 0;
@@ -154,7 +259,6 @@
             flex-shrink: 0;
         }
 
-        /* --- 链接样式 --- */
         a {
             color: #00668B;
             text-decoration: none;
@@ -166,7 +270,6 @@
             text-decoration: underline;
         }
 
-        /* --- 社交媒体网格 --- */
         .social-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -194,7 +297,6 @@
             color: #00668B;
         }
 
-        /* --- 页脚 --- */
         footer {
             text-align: center;
             margin-top: 0px;
@@ -203,7 +305,6 @@
             padding-top: 20px;
         }
 
-        /* --- 响应式设计 --- */
         @media (max-width: 600px) {
             .contact-list li {
                 white-space: normal;
@@ -221,8 +322,7 @@
                 width: 90px;
                 height: 90px;
             }
-            
-            /* 修复竖屏缩进问题 */
+
             .contact-list li {
                 padding-left: 0;
             }
@@ -232,15 +332,12 @@
 <body>
 
     <div class="container">
-        
-        <!-- 头部区域 -->
         <header>
-            <img src="Picture/profile.jpg" alt="头像加载失败" class="avatar">
+            <img src="Picture/profile.jpg" alt="" class="avatar">
             <h1>旅冬亦</h1>
             <p class="title">半匹红纱一丈绫华</p>
         </header>
 
-        <!-- 关于我 -->
         <section>
             <h2>👋 关于我</h2>
             <p>
@@ -252,7 +349,6 @@
             </p>
         </section>
 
-        <!-- 经历或技能-->
         <section>
             <h2>💼 经历与技能</h2>
             <p>
@@ -260,77 +356,66 @@
             </p>
         </section>
 
-        <!-- 联系方式 -->
         <section>
             <h2>📞 联系方式</h2>
             <ul class="contact-list">
-                <!-- 邮箱 -->
+
                 <li>
                     <span class="icon">📧</span> 邮箱:
                     请通过社交媒体或Github联系
                 </li>
-                
-                <!-- 电话 -->
+
                 <li>
                     <span class="icon">📱</span> 电话:
                     请通过社交媒体或Github联系
                 </li>
-                
-                <!-- GitHub -->
+
                 <li>
                     <span class="icon">💻</span> 仓库:
                     <a href="https://github.com/lxj13533251583" target="_blank">https://github.com/lxj13533251583</a>
                 </li>
-                
-                <!-- 个人网站 -->
+
                 <li>
                     <span class="icon">🌐</span> 网站:
                     <a href="https://lxj13533251583.github.io/ldy/" target="_blank">https://lxj13533251583.github.io/ldy/</a>
                 </li>
-                
-                <!-- 地址 -->
+
                 <li>
                     <span class="icon">🏢</span> 国家:
                     中国
                 </li>
             </ul>
         </section>
-        
-        <!-- 社交媒体 -->
+
         <section>
             <h2>📱 社交媒体</h2>
             <div class="social-grid">
-                <!-- GitHub -->
+
                 <a href="https://github.com/lxj13533251583" class="social-btn" target="_blank">
                 <img src="icon/Github.png" alt="" style="width: 24px; height: 24px; margin-right: 8px;">
                     GitHub
                 </a>
-                
-                <!-- 微信 -->
+
                 <a href="" class="social-btn" target="_blank">
                 <img src="icon/WeChat.png" alt="" style="width: 24px; height: 24px; margin-right: 8px;">
                     微信
                 </a>
-                
-                <!-- QQ -->
+
                 <a href="" class="social-btn" target="_blank">
                 <img src="icon/QQ.png" alt="" style="width: 24px; height: 24px; margin-right: 8px;">
                     QQ
                 </a>
-                
-                <!-- 哔哩哔哩 -->
+
                 <a href="https://b23.tv/085t3Ls" class="social-btn" target="_blank">
                 <img src="icon/bilibili.png" alt="" style="width: 24px; height: 24px; margin-right: 8px;">
                     Bilibili
                 </a>
-                
-                <!-- 抖音 -->
+
                 <a href="https://m.douyin.com/share/user/MS4wLjABAAAAlRVshehQoPfD1iLNuyq_lnTXK-BZwTqL6ufkQPEWBtYUepkNvIKtBPNWHQ5pMFer" class="social-btn" target="_blank">
                 <img src="icon/douyin.png" alt="" style="width: 24px; height: 24px; margin-right: 8px;">
                     抖音
                 </a>
-                
-                <!-- 快手 -->
+
                 <a href="https://v.kuaishou.com/JVGv8Fkx" class="social-btn" target="_blank">
                 <img src="icon/kuaishou.png" alt="" style="width: 24px; height: 24px; margin-right: 8px;">
                     快手
@@ -339,13 +424,92 @@
         </section>
     </div>
 
+            <div class="font-selector-container">
+            <button id="fontToggleBtn" class="font-toggle-btn">切换字体</button>
+
+            <div id="fontOverlay" class="font-overlay"></div>
+
+            <div id="fontDropdown" class="font-dropdown">
+              <div class="font-option selected" data-font="system">系统默认<span class="check-icon">✓</span></div>
+              <div class="font-option" data-font="font1">MiSans<span class="check-icon">✓</span></div>
+              <div class="font-option" data-font="font2">小米兰亭Pro<span class="check-icon">✓</span></div>
+              <div class="font-option" data-font="font3">HarmonyOS Sans<span class="check-icon">✓</span></div>
+              <div class="font-option" data-font="font4">OPPO Sans<span class="check-icon">✓</span></div>
+              <div class="font-option" data-font="font5">汉仪文黑<span class="check-icon">✓</span></div>
+              <div class="font-option" data-font="font6">汉仪旗黑<span class="check-icon">✓</span></div>
+            </div>
+          </div>
+
     <footer>
         <p style="text-align: center;">© <span id="year"></span> 旅冬亦 版权所有</p>
     </footer>
 
     <script>
-        // 自动更新页脚年份
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        const toggleBtn = document.getElementById('fontToggleBtn');
+        const overlay = document.getElementById('fontOverlay');
+        const dropdown = document.getElementById('fontDropdown');
+        const options = document.querySelectorAll('.font-option');
+
+        function toggleDropdown() {
+          const isShowing = dropdown.classList.contains('show');
+          if (isShowing) {
+            closeDropdown();
+          } else {
+            openDropdown();
+          }
+        }
+
+        function openDropdown() {
+          overlay.classList.add('show');
+          void dropdown.offsetWidth;
+          dropdown.classList.add('show');
+        }
+
+        function closeDropdown() {
+        dropdown.classList.remove('show');
+        setTimeout(()=> {
+          overlay.classList.remove('show');
+        },200);
+        }
+
+        toggleBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleDropdown();
+        });
+
+        options.forEach(option => {
+          option.addEventListener('click', (e) => {
+          e.stopPropagation();
+            const fontKey = option.getAttribute('data-font');
+
+            document.body.className = document.body.className
+              .split(' ')
+              .filter(cls => !cls.startsWith('use-font'))
+              .join(' ');
+
+            if (fontKey === 'system') {
+              document.body.classList.add('use-system');
+              toggleBtn.textContent = '切换字体';
+            } else {
+              document.body.classList.add(`use-${fontKey}`);
+              const fontName = option.textContent.trim().replace('✓', '');
+              toggleBtn.textContent = `切换字体`;
+            }
+            options.forEach(opt => opt.classList.remove('selected'));
+            option.classList.add('selected');
+            closeDropdown();
+          });
+        });
+
+        overlay.addEventListener('click', closeDropdown);
+        document.addEventListener('click', (e) => {
+          if (!e.target.closest('.font-selector-container')) {
+            closeDropdown();
+          }
+        });
+
     </script>
 </body>
 </html>

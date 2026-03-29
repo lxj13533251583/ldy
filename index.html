@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>旅冬亦的网页</title>
-    <!-- 基础 Favicon -->  
     <link rel="icon" type="Picture/profile.jpg" href="Picture/profile.jpg">  
 
     <style>
-     @font-face{
-     font-family: 'MyCustomFont';
-     src: url('Font/小米兰亭Pro.ttf') format('truetype');
-     font-weight: normal;
-     font-style: normal;
-     font-display: swap;
-    }
+        html {
+         scroll-behavior: smooth;
+        }
+
+         @font-face{
+         font-family: 'MyCustomFont';
+         src: url('Font/小米兰亭Pro.ttf') format('truetype');
+         font-weight: normal;
+         font-style: normal;
+         font-display: swap;
+        }
 
         @font-face { font-family: 'CustomFont1'; src: url('/Font/MiSans.ttf') format('truetype'); }
         @font-face { font-family: 'CustomFont2'; src: url('/Font/小米兰亭Pro.ttf') format('truetype'); }
@@ -60,13 +63,15 @@
           background: rgba(0, 0, 0, 0.4);
           opacity: 0;
           visibility: hidden;
+          pointer-events: none;
           z-index: 999;
           transition: opacity 0.2s ease;
         }
 
         .font-overlay.show {
-          opacity: 1;
+          opacity: 0;
           visibility: visible;
+          pointer-events: auto;
         }
 
         .font-dropdown {
@@ -81,6 +86,7 @@
           overflow: hidden;
           z-index: 1003;
           opacity: 0;
+          pointer-events: none;
           transition: 
             opacity 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
             transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -88,6 +94,7 @@
 
         .font-dropdown.show {
           opacity: 1;
+          pointer-events: auto;
           transform: translateX(-50%) translateY(0) scale(1);
         }
 
@@ -125,13 +132,12 @@
         body.use-font6 { font-family: 'CustomFont6', "PingFang SC", "Microsoft YaHei", sans-serif; }
         body.use-system { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; }
 
-        /* 基础样式重置 */
         * {
             box-sizing: border-box;
         }
 
         body {
-            font-family: 'MyCustomFont', "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
             font-size: 14px;
             line-height: 1;
             margin: 0;
@@ -141,7 +147,6 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* 深色模式 */
         @media (prefers-color-scheme: dark) {
             body {
                 background-color: #121212;
@@ -203,7 +208,7 @@
         .avatar:hover {
             transform: scale(1.08);
             border-color: #00668B;
-            box-shadow: 0 8px 15px rgba(0, 102, 139, 0.4);
+            box-shadow: 0 12px 24px rgba(0, 102, 139, 0.3);
         }
 
         h1 {
@@ -293,7 +298,8 @@
 
         .social-btn:hover {
             background: #e6f4ff;
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 102, 139, 0.2);
             color: #00668B;
         }
 
@@ -316,6 +322,8 @@
             }
             .container {
                 padding: 20px;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+                transition: box-shadow 0.3s ease;
             }
             
             .avatar {
@@ -359,7 +367,6 @@
         <section>
             <h2>📞 联系方式</h2>
             <ul class="contact-list">
-
                 <li>
                     <span class="icon">📧</span> 邮箱:
                     请通过社交媒体或Github联系
@@ -505,11 +512,11 @@
 
         overlay.addEventListener('click', closeDropdown);
         document.addEventListener('click', (e) => {
-          if (!e.target.closest('.font-selector-container')) {
+          if (dropdown.classList.contains('show') &&
+            !e.target.closest('.font-selector-container')) {
             closeDropdown();
           }
         });
-
     </script>
 </body>
 </html>

@@ -267,12 +267,20 @@
         a {
             color: #00668B;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: background-color 0.15s, transform 0.1s;
+            border-radius: 6px;
+            display: inline-block;
+            padding: 4px 6px;
         }
 
-        a:hover {
-            color: #005577;
-            text-decoration: underline;
+        a:active {
+             transform: scale(0.96);
+            background-color: #e6f4ff;
+        }
+
+
+        .contact-list li {
+            color: #333;
         }
 
         .social-grid {
@@ -294,6 +302,7 @@
             text-decoration: none;
             transition: all 0.2s ease;
             font-weight: bold;
+            overflow: hidden;
         }
 
         .social-btn:hover {
@@ -301,6 +310,11 @@
             transform: translateY(-4px);
             box-shadow: 0 8px 16px rgba(0, 102, 139, 0.2);
             color: #00668B;
+        }
+
+        .social-btn.pressed {
+            background-color: #e6f4ff !important;
+            border-radius: 12px !important;
         }
 
         footer {
@@ -312,34 +326,54 @@
         }
 
         @media (max-width: 600px) {
-            .contact-list li {
-                white-space: normal;
-                padding-left: 0;
-            }
-            footer p {
-                font-size: 0.8em;
-                text-align: center;
-            }
-            .container {
-                padding: 20px;
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-                transition: box-shadow 0.3s ease;
-            }
-            
-            .avatar {
-                width: 90px;
-                height: 90px;
-            }
-
-            .contact-list li {
-                padding-left: 0;
-            }
+        
+        .contact-list li {
+            white-space: normal;
+            padding-left: 0;
         }
+
+        footer p {
+            font-size: 0.8em;
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: box-shadow 0.3s ease;
+        }
+            
+        .avatar {
+            width: 90px;
+            height: 90px;
+        }
+
+        .contact-list li {
+            padding-left: 0;
+        }
+    }
+
+        .js-fade-in {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+         to {
+             opacity: 1;
+             transform: translateY(0);
+             }
+         }
+    </style>
+
+    <style>
+        .js-fade-in { opacity: 0; }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="container js-fade-in">
         <header>
             <img src="Picture/profile.jpg" alt="" class="avatar">
             <h1>旅冬亦</h1>
@@ -447,13 +481,43 @@
             </div>
           </div>
 
-    <footer>
-        <p style="text-align: center;">© <span id="year"></span> 旅冬亦 版权所有</p>
-    </footer>
+    <footer style="
+        margin-top: 30px;
+        padding: 18px 15px;
+        text-align: center;
+        font-size: 0.9em;
+        color: #666;
+        background: #f9fafb;
+    ">
+
+    <div style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 8px;
+    ">
+    <div id="current-time" style="
+        font-size: 0.85em;
+        color: #777;
+        line-height: 1.4;
+    ">
+    </div>
+
+    <div id="last-modified" style="
+    font-size: 0.85em;
+    color: #777;
+    line-height: 1.4;
+    ">
+    </div>
+
+    </div>
+    <div style="font-size: 0.85em; color: #555;">
+      © <span id="current-year"></span> 旅冬亦 版权所有
+    </div>
+</footer>
 
     <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-
         const toggleBtn = document.getElementById('fontToggleBtn');
         const overlay = document.getElementById('fontOverlay');
         const dropdown = document.getElementById('fontDropdown');
@@ -517,6 +581,42 @@
             closeDropdown();
           }
         });
+
+        function formatDateTime(date) {
+          const y = date.getFullYear();
+          const m = date.getMonth() + 1;
+          const d = date.getDate();
+          const h = date.getHours().toString().padStart(2, '0');
+          const min = date.getMinutes().toString().padStart(2, '0');
+          const s = date.getSeconds().toString().padStart(2, '0');
+          return `${y}年${m}月${d}日 ${h}:${min}:${s}`;
+        }
+
+        function updateCurrentTime() {
+          const now = new Date();
+          document.getElementById('current-time').textContent = formatDateTime(now);
+        }
+        updateCurrentTime();
+        setInterval(updateCurrentTime, 1000);
+
+        const lastMod = new Date(document.lastModified);
+        document.getElementById('last-modified').textContent = '最后更新：' + formatDateTime(lastMod);
+
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.addEventListener('touchstart', handlePress);
+            btn.addEventListener('mousedown', handlePress);
+        });
+
+        function handlePress(e) {
+            const btn = e.currentTarget;
+            btn.classList.add('pressed');
+        setTimeout(() => {
+            btn.classList.remove('pressed');
+            }, 150);
+        }
+
     </script>
 </body>
 </html>

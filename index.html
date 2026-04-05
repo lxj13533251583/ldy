@@ -693,21 +693,10 @@
         return `${year}/${month}/${day} ${hours}:${minutes}:${seconds}`;
     }
 
-    const lastModifiedSpan = document.getElementById('panel-last-modified');
-    if (lastModifiedSpan) {
-        fetch(window.location.href, { method: 'HEAD', cache: 'no-cache' })
-            .then(response => {
-                const lastModified = response.headers.get('Last-Modified');
-                if (lastModified) {
-                    lastModifiedSpan.textContent = formatTime(new Date(lastModified));
-                } else {
-                    lastModifiedSpan.textContent = formatTime(new Date(document.lastModified));
-                }
-            })
-            .catch(() => {
-                lastModifiedSpan.textContent = formatTime(new Date(document.lastModified));
-            });
-    }
+const lastModifiedSpan = document.getElementById('panel-last-modified');
+if (lastModifiedSpan) {
+    lastModifiedSpan.textContent = formatTime(new Date(document.lastModified));
+}
 
     function updateCurrentTime() {
         const now = new Date();

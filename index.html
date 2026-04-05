@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>旅冬亦的网页</title>
-    <link rel="icon" type="Picture/profile.jpg" href="Picture/profile.jpg">  
+    <link rel="icon" type="Picture/profile.jpg" href="Picture/profile.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         html {
@@ -138,7 +139,7 @@
 
         body {
             font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
-            font-size: 14px;
+            font-size: clamp(14px, 2.5vw, 16px);
             line-height: 1;
             margin: 0;
             padding: 20px;
@@ -312,6 +313,9 @@
             color: #00668B;
         }
 
+        .social-btn:hover i {
+        }
+
         .social-btn.pressed {
             background-color: #e6f4ff !important;
             border-radius: 12px !important;
@@ -350,8 +354,8 @@
 
         .contact-list li {
             padding-left: 0;
+          }
         }
-    }
 
         .js-fade-in {
             opacity: 0;
@@ -365,157 +369,401 @@
              transform: translateY(0);
              }
          }
-    </style>
 
-    <style>
-        .js-fade-in { opacity: 0; }
+         .settings-container {
+             position: relative;
+             margin-bottom: 4px;
+             margin-top: 20px;
+             text-align: center;
+         }
+
+         .settings-toggle-btn {
+             background: #f8f9fa;
+             color: #333;
+             border: 1px solid #eaeef5;
+             padding: 10px 16px;
+             border-radius: 12px;
+             font-size: 14px;
+             cursor: pointer;
+             transition: all 0.2s ease;
+             display: inline-flex;
+             align-items: center;
+             gap: 6px;
+             box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+             font-family: inherit;
+             font-weight: bold;
+             min-width: 100px;
+             justify-content: center;
+         }
+
+         .settings-toggle-btn:hover {
+             background: #e6f4ff;
+             transform: translateY(-2px);
+             box-shadow: 0 8px 16px rgba(0,102,139,0.2)
+             color: #00668B;
+         }
+
+         .settings-overlay {
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%dvh;
+             backdrop-filter: blur(8px);
+             -webkit-backdrop-filter: blur(8px);
+             background: rgba(0, 0, 0, 0.2);
+             opacity: 0;
+             visibility: hidden;
+             pointer-events: none;
+             z-index: 998;
+             transition: opacity 0.3s ease, visibility 0.3s ease;
+         }
+
+         .settings-overlay.show {
+             opacity: 1;
+             visibility: visible;
+             pointer-events: auto;
+         }
+
+         .settings-panel {
+             position: fixed;
+             bottom: -100%;
+             left: 50%;
+             transform: translateX(-50%);
+             width: 90%;
+             max-width: 400px;
+             background: white;
+             border-radius: 16px 16px 0 0;
+             box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+             padding: 24px;
+             z-index: 999;
+             transition: bottom 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+             overflow-y: auto;
+             max-height: 80vh;
+         }
+
+         .settings-overlay.show ~ #settings-panel {
+             bottom: 0;
+         }
+
+         .settings-header {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             margin-bottom: 20px;
+             padding-bottom: 12px;
+             border-bottom: 1px solid #eee;
+         }
+
+         .settings-header h3 {
+             margin: 0;
+             font-size: 1.2em;
+             color: #222;
+         }
+
+         .close-btn {
+             background: none;
+             border: none;
+             font-size: 24px;
+             color: #999;
+             cursor: pointer;
+             padding: 0;
+             width: 24px;
+             height: 24px;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+         }
+
+         .close-btn:hover {
+             color: #333;
+         }
+
+         .settings-group {
+             margin-bottom: 24px;
+         }
+
+         .settings-group h4 {
+             margin: 0 0 12px 0;
+             color: #444;
+             font-weight: 600;
+         }
+
+         .theme-options {
+             display: grid;
+             grid-template-columns: repeat(3, 1fr);
+             gap: 10px;
+         }
+
+         .theme-btn {
+             padding: 8px 0;
+             font-size: 13px;
+             border: 1px solid #ddd;
+             background: #fafafa;
+             border-radius: 8px;
+             cursor: pointer;
+             transition: all 0.2s;
+         }
+
+         .theme-btn:hover {
+             border-color: #00668B;
+         }
+
+         .theme-btn.active {
+             background: #00668B;
+             color: white;
+             border-color: #00668B;
+         }
+
+         .font-options {
+             display: grid;
+             grid-template-columns: repeat(2, 1fr);
+             gap: 10px;
+         }
+
+         .font-option {
+             padding: 10px;
+             text-align: center;
+             border: 1px solid #eee;
+             border-radius: 8px;
+             cursor: pointer;
+             font-size: 14px;
+             transition: all 0.2s;
+         }
+
+         .font-option:hover {
+             background: #f0f8ff;
+             border-color: #00668B;
+         }
+
+         .font-option.selected {
+             background: #e6f4ff;
+             border-color: #00668B;
+             color: #00668B;
+             font-weight: bold;
+         }
+
+         .info-box {
+             background: #f9f9f9;
+             padding: 14px;
+             border-radius: 10px;
+             border: 1px solid #eee;
+             font-size: 14px;
+             color: #555;
+         }
+
+         .info-box p {
+             margin: 6px 0;
+         }
+
+         .changelog-btn {
+             width: 100%;
+             padding: 12px;
+             background: #00668B;
+             color: white;
+             border: none;
+             border-radius: 10px;
+             font-size: 14px;
+             cursor: pointer;
+             margin-top: 16px;
+             transition: background 0.2s;
+         }
+
+         .changelog-btn:hover {
+             background: #005575;
+         }
     </style>
 </head>
 <body>
 
     <div class="container js-fade-in">
         <header>
-            <img src="Picture/profile.jpg" alt="" class="avatar">
-            <h1>旅冬亦</h1>
-            <p class="title">半匹红纱一丈绫华</p>
+          <img src="Picture/profile.jpg" alt="" class="avatar">
+          <h1>旅冬亦</h1>
+          <p class="title">半匹红纱一丈绫华</p>
         </header>
 
         <section>
-            <h2>👋 关于我</h2>
-            <p>
-                你好！我是<strong>旅冬亦</strong>。
-                这是我的个人网站。
-            </p>
-            <p>
-                网站正在<strong>测试</strong>中，内容仅供预览
-            </p>
+          <h2>👋 关于我</h2>
+          <p>
+            你好！我是<strong>旅冬亦</strong>。
+            这是我的个人网站。
+          </p>
+          <p>
+            网站正在<strong>测试</strong>中，内容仅供预览
+          </p>
         </section>
 
         <section>
-            <h2>💼 经历与技能</h2>
-            <p>
-                完善中
-            </p>
+          <h2>💼 经历与技能</h2>
+          <p>
+            完善中
+          </p>
         </section>
 
         <section>
-            <h2>📞 联系方式</h2>
-            <ul class="contact-list">
-                <li>
-                    <span class="icon">📧</span> 邮箱:
-                    请通过社交媒体或Github联系
-                </li>
+          <h2>📞 联系方式</h2>
+          <ul class="contact-list">
+            <li>
+              <span class="icon">📧</span> 邮箱:
+              请通过社交媒体或Github联系
+            </li>
 
-                <li>
-                    <span class="icon">📱</span> 电话:
-                    请通过社交媒体或Github联系
-                </li>
+            <li>
+              <span class="icon">📱</span> 电话:
+              请通过社交媒体或Github联系
+            </li>
 
-                <li>
-                    <span class="icon">💻</span> 仓库:
-                    <a href="https://github.com/lxj13533251583" target="_blank">https://github.com/lxj13533251583</a>
-                </li>
+            <li>
+              <span class="icon">💻</span> 仓库:
+              <a href="https://github.com/lxj13533251583" target="_blank">https://github.com/lxj13533251583</a>
+              </li>
 
-                <li>
-                    <span class="icon">🌐</span> 网站:
-                    <a href="https://lxj13533251583.github.io/ldy/" target="_blank">https://lxj13533251583.github.io/ldy/</a>
-                </li>
+              <li>
+                <span class="icon">🌐</span> 网站:
+                <a href="https://lxj13533251583.github.io/ldy/" target="_blank">https://lxj13533251583.github.io/ldy/</a>
+              </li>
 
-                <li>
-                    <span class="icon">🏢</span> 国家:
-                    中国
-                </li>
+              <li>
+                <span class="icon">🏢</span> 国家:
+                中国
+              </li>
             </ul>
         </section>
 
         <section>
-            <h2>📱 社交媒体</h2>
-            <div class="social-grid">
+          <h2>📱 社交媒体</h2>
 
-                <a href="https://github.com/lxj13533251583" class="social-btn" target="_blank">
-                <img src="icon/Github.png" alt="" style="width: 24px; height: 24px; margin-right: 8px;">
-                    GitHub
-                </a>
+          <div class="social-grid">
+            <a href="https://github.com/lxj13533251583" class="social-btn" target="_blank"> 
+              <i class="fab fa-github" style="
+              width: 24px;
+              height: 24px;
+              margin-right: 8px;
+              font-size: 24px;
+              color: #24292e;
+              ">
+              </i>
+              GitHub
+            </a>
 
-                <a href="" class="social-btn" target="_blank">
-                <img src="icon/WeChat.png" alt="" style="width: 24px; height: 24px; margin-right: 8px;">
-                    微信
-                </a>
+            <a href="" class="social-btn" target="_blank"> 
+              <i class="fab fa-weixin" style="
+              width: 24px;
+              height: 24px;
+              margin-right:8px;
+              font-size: 24px;
+              color: #07C160
+              ">
+              </i>
+              微信
+            </a>
 
-                <a href="" class="social-btn" target="_blank">
-                <img src="icon/QQ.png" alt="" style="width: 24px; height: 24px; margin-right: 8px;">
-                    QQ
-                </a>
+            <a href="" class="social-btn" target="_blank"> 
+              <i class="fab fa-qq" style="
+              width: 24px;
+              height: 24px;
+              margin-right: 8px;
+              font-size: 24px;
+              color: #12B7F5;
+              ">
+              </i>
+              QQ
+            </a>
 
-                <a href="https://b23.tv/085t3Ls" class="social-btn" target="_blank">
-                <img src="icon/bilibili.png" alt="" style="width: 24px; height: 24px; margin-right: 8px;">
-                    Bilibili
-                </a>
+            <a href="https://b23.tv/085t3Ls" class="social-btn" target="_blank"> 
+              <i class="fab fa-bilibili" style="
+              width: 24px;
+              height: 24px;
+              margin-right:8px;
+              font-size: 24px;
+              color: #FB7299;
+              ">
+              </i>
+              Bilibili
+            </a>
 
-                <a href="https://m.douyin.com/share/user/MS4wLjABAAAAlRVshehQoPfD1iLNuyq_lnTXK-BZwTqL6ufkQPEWBtYUepkNvIKtBPNWHQ5pMFer" class="social-btn" target="_blank">
-                <img src="icon/douyin.png" alt="" style="width: 24px; height: 24px; margin-right: 8px;">
-                    抖音
-                </a>
+            <a href="https://m.douyin.com/share/user/MS4wLjABAAAAlRVshehQoPfD1iLNuyq_lnTXK-BZwTqL6ufkQPEWBtYUepkNvIKtBPNWHQ5pMFer" class="social-btn" target="_blank"> 
+              <i class="fab fa-tiktok" style="
+              width: 24px;
+              height: 24px;
+              margin-right: 8px;
+              font-size: 24px;
+              color: #000000;
+              ">
+              </i>
+              抖音
+            </a>
 
-                <a href="https://v.kuaishou.com/JVGv8Fkx" class="social-btn" target="_blank">
-                <img src="icon/kuaishou.png" alt="" style="width: 24px; height: 24px; margin-right: 8px;">
-                    快手
-                </a>
+            <a href="https://v.kuaishou.com/JVGv8Fkx" class="social-btn" target="_blank"> 
+              <img src="icon/kuaishou.png" alt="" style="
+              width: 24px;
+              height: 24px;
+              margin-right: 8px;
+              font-size: 24px;
+              ">
+              快手
+            </a>
             </div>
-        </section>
-    </div>
-
-            <div class="font-selector-container">
-            <button id="fontToggleBtn" class="font-toggle-btn">切换字体</button>
-
-            <div id="fontOverlay" class="font-overlay"></div>
-
-            <div id="fontDropdown" class="font-dropdown">
-              <div class="font-option selected" data-font="system">系统默认<span class="check-icon">✓</span></div>
-              <div class="font-option" data-font="font1">MiSans<span class="check-icon">✓</span></div>
-              <div class="font-option" data-font="font2">小米兰亭Pro<span class="check-icon">✓</span></div>
-              <div class="font-option" data-font="font3">HarmonyOS Sans<span class="check-icon">✓</span></div>
-              <div class="font-option" data-font="font4">OPPO Sans<span class="check-icon">✓</span></div>
-              <div class="font-option" data-font="font5">汉仪文黑<span class="check-icon">✓</span></div>
-              <div class="font-option" data-font="font6">汉仪旗黑<span class="check-icon">✓</span></div>
-            </div>
+          </section>
           </div>
 
-    <footer style="
-        margin-top: 30px;
-        padding: 18px 15px;
-        text-align: center;
-        font-size: 0.9em;
-        color: #666;
-        background: #f9fafb;
-    ">
+        <div class="settings-container">
+          <button id="settingsToggle" class="settings-toggle-btn">
+            ⚙️ 设置
+          </button>
+        </div>
 
-    <div style="
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 6px;
-        margin-bottom: 8px;
-    ">
-    <div id="current-time" style="
-        font-size: 0.85em;
-        color: #777;
-        line-height: 1.4;
-    ">
-    </div>
+        <div id="settingsOverlay" class="settings-overlay"></div>
+        <div id="settings-panel" class="settings-panel">
 
-    <div id="last-modified" style="
-    font-size: 0.85em;
-    color: #777;
-    line-height: 1.4;
-    ">
-    </div>
+        <div class="settings-header">
+            <h3>⚙️ 网页设置</h3>
+            <button id="closeSettings" class="close-btn">×</button>
+        </div>
 
-    </div>
-    <div style="font-size: 0.85em; color: #555;">
-      © <span id="current-year"></span> 旅冬亦 版权所有
-    </div>
-</footer>
+        <div class="settings-group">
+          <h4>🎨 外观模式</h4>
+          <div class="theme-options">
+            <button class="theme-btn" data-theme="auto">自动</button>
+            <button class="theme-btn" data-theme="light">浅色</button>
+            <button class="theme-btn" data-theme="dark">深色</button>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <h4>✒️ 字体选择</h4>
+            <div class="font-options" id="fontOptionsInPanel">
+            <div class="font-option selected" data-font="system">系统默认</div>
+            <div class="font-option" data-font="font1">MiSans</div>
+            <div class="font-option" data-font="font2">小米兰亭</div>
+            <div class="font-option" data-font="font3">HarmonyOS</div>
+            <div class="font-option" data-font="font4">OPPO Sans</div>
+            <div class="font-option" data-font="font5">汉仪文黑</div>
+            <div class="font-option" data-font="font6">汉仪旗黑</div>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <h4>ℹ️ 状态信息</h4>
+            <div class="info-box">
+            <p>当前时间: <span id="panel-current-time"></span></p>
+            <p>最后更新: <span id="panel-last-modified"></span></p>
+          </div>
+            <button id="gotoChangelog" class="changelog-btn">更新日志</button>
+          </div>
+        </div>
+    </footer>
+
+        <div style="
+            text-align: center;
+            font-size: 0.85em;
+            color: #555;
+            margin-top: 10px;
+            padding: 0 20px;
+            ">
+          © <span id="current-year"></span> 旅冬亦 版权所有
+        </div>
 
     <script>
         const toggleBtn = document.getElementById('fontToggleBtn');
@@ -555,22 +803,22 @@
           e.stopPropagation();
             const fontKey = option.getAttribute('data-font');
 
-            document.body.className = document.body.className
-              .split(' ')
-              .filter(cls => !cls.startsWith('use-font'))
-              .join(' ');
+        document.body.className = document.body.className
+          .split(' ')
+          .filter(cls => !cls.startsWith('use-font'))
+          .join(' ');
 
-            if (fontKey === 'system') {
-              document.body.classList.add('use-system');
-              toggleBtn.textContent = '切换字体';
-            } else {
-              document.body.classList.add(`use-${fontKey}`);
-              const fontName = option.textContent.trim().replace('✓', '');
-              toggleBtn.textContent = `切换字体`;
-            }
-            options.forEach(opt => opt.classList.remove('selected'));
-            option.classList.add('selected');
-            closeDropdown();
+        if (fontKey === 'system') {
+          document.body.classList.add('use-system');
+          toggleBtn.textContent = '切换字体';
+          } else {
+          document.body.classList.add(`use-${fontKey}`);
+          const fontName = option.textContent.trim().replace('✓', '');
+          toggleBtn.textContent = `切换字体`;
+          }
+          options.forEach(opt => opt.classList.remove('selected'));
+          option.classList.add('selected');
+          closeDropdown();
           });
         });
 
@@ -605,18 +853,127 @@
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
         document.querySelectorAll('.social-btn').forEach(btn => {
-            btn.addEventListener('touchstart', handlePress);
-            btn.addEventListener('mousedown', handlePress);
+          btn.addEventListener('touchstart', handlePress);
+          btn.addEventListener('mousedown', handlePress);
         });
 
         function handlePress(e) {
-            const btn = e.currentTarget;
-            btn.classList.add('pressed');
+          const btn = e.currentTarget;
+          btn.classList.add('pressed');
         setTimeout(() => {
-            btn.classList.remove('pressed');
-            }, 150);
+          btn.classList.remove('pressed');
+          }, 150);
         }
 
+        document.addEventListener('DOMContentLoaded', function () {
+          const settingsToggle = document.getElementById('settingsToggle');
+          const closeBtn = document.getElementById('closeSettings');
+          const overlay = document.getElementById('settingsOverlay');
+          const panel = document.getElementById('settings-panel');
+          const themeButtons = document.querySelectorAll('.theme-btn');
+          const fontOptions = document.querySelectorAll('.font-option');
+          const changelogBtn = document.getElementById('gotoChangelog');
+
+        function openSettings() {
+          overlay.classList.add('show');
+            setTimeout(() => {
+              panel.style.bottom = '0';
+            }, 10);
+        }
+
+        function closeSettings() {
+          panel.style.bottom = '-100%';
+            setTimeout(() => {
+              overlay.classList.remove('show');
+            }, 400);
+        }
+
+        settingsToggle.addEventListener('click', openSettings);
+        closeBtn.addEventListener('click', closeSettings);
+        overlay.addEventListener('click', closeSettings);
+
+        const savedTheme = localStorage.getItem('preferred-theme') || 'auto';
+
+        function applyTheme(theme) {
+          document.body.className = document.body.className
+            .split(' ')
+            .filter(cls => !['light-theme', 'dark-theme'].includes(cls))
+            .join(' ')
+            .trim();
+
+        if (theme === 'dark') {
+          document.body.classList.add('dark-theme');
+          } else if (theme === 'light') {
+            document.body.classList.add('light-theme');
+          }
+
+        themeButtons.forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.theme === theme);
+        });
+
+        localStorage.setItem('preferred-theme', theme);
+        }
+
+        applyTheme(savedTheme);
+
+        themeButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+          applyTheme(btn.dataset.theme);
+          });
+        });
+
+        const savedFont = localStorage.getItem('preferred-font') || 'system';
+
+        function applyFont(fontKey) {
+          document.body.className = document.body.className
+            .split(' ')
+            .filter(cls => !cls.startsWith('use-font') && cls !== 'use-system')
+            .join(' ')
+            .trim();
+
+        if (fontKey === 'system') {
+          document.body.classList.add('use-system');
+        } else {
+          document.body.classList.add(`use-${fontKey}`);
+        }
+
+        fontOptions.forEach(opt => {
+          opt.classList.toggle('selected', opt.dataset.font === fontKey);
+        });
+
+        localStorage.setItem('preferred-font', fontKey);
+        }
+
+        applyFont(savedFont);
+
+        fontOptions.forEach(opt => {
+          opt.addEventListener('click', () => {
+            applyFont(opt.dataset.font);
+          });
+        });
+
+        function updatePanelTime() {
+          const now = new Date();
+          document.getElementById('panel-current-time').textContent =
+            `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+          const lastModified = document.lastModified ? new Date(document.lastModified) : new Date();
+          document.getElementById('panel-last-modified').textContent =
+            lastModified.toLocaleString('zh-CN');
+        }
+
+        setInterval(updatePanelTime, 1000);
+        updatePanelTime();
+
+        changelogBtn.addEventListener('click', () => {
+          const changelogUrl = 'https://lxj13533251583.github.io/ldy/changelog.html';
+          if (changelogUrl) {
+            window.open(changelogUrl, '_blank');
+            } else {
+            alert('更新日志加载失败');
+            }
+          });
+        });
     </script>
+
 </body>
 </html>

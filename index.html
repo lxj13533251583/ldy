@@ -7,6 +7,9 @@
     <link rel="icon" type="image/jpeg" href="Picture/profile.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+        :root {
+            --spring-easing: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
         html {
             scroll-behavior: smooth;
         }
@@ -21,20 +24,52 @@
             font-style: normal;
             font-display: swap;
         }
-        @font-face { font-family: 'CustomFont1'; src: url('/Font/MiSans.ttf') format('truetype'); }
-        @font-face { font-family: 'CustomFont2'; src: url('/Font/小米兰亭Pro.ttf') format('truetype'); }
-        @font-face { font-family: 'CustomFont3'; src: url('/Font/HarmonyOS Sans.ttf') format('truetype'); }
-        @font-face { font-family: 'CustomFont4'; src: url('/Font/OPPO Sans.ttf') format('truetype'); }
-        @font-face { font-family: 'CustomFont5'; src: url('/Font/汉仪文黑.ttf') format('truetype'); }
-        @font-face { font-family: 'CustomFont6'; src: url('/Font/汉仪旗黑.ttf') format('truetype'); }
+        @font-face {
+            font-family: 'CustomFont1';
+            src: url('/Font/MiSans.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'CustomFont2';
+            src: url('/Font/小米兰亭Pro.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'CustomFont3';
+            src: url('/Font/HarmonyOS Sans.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'CustomFont4';
+            src: url('/Font/OPPO Sans.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'CustomFont5';
+            src: url('/Font/汉仪文黑.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'CustomFont6';
+            src: url('/Font/汉仪旗黑.ttf') format('truetype');
+        }
 
-        body.use-font1 { font-family: 'CustomFont1', "PingFang SC", "Microsoft YaHei", sans-serif; }
-        body.use-font2 { font-family: 'CustomFont2', "PingFang SC", "Microsoft YaHei", sans-serif; }
-        body.use-font3 { font-family: 'CustomFont3', "PingFang SC", "Microsoft YaHei", sans-serif; }
-        body.use-font4 { font-family: 'CustomFont4', "PingFang SC", "Microsoft YaHei", sans-serif; }
-        body.use-font5 { font-family: 'CustomFont5', "PingFang SC", "Microsoft YaHei", sans-serif; }
-        body.use-font6 { font-family: 'CustomFont6', "PingFang SC", "Microsoft YaHei", sans-serif; }
-        body.use-system { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; }
+        body.use-font1 {
+            font-family: 'CustomFont1', "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        body.use-font2 {
+            font-family: 'CustomFont2', "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        body.use-font3 {
+            font-family: 'CustomFont3', "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        body.use-font4 {
+            font-family: 'CustomFont4', "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        body.use-font5 {
+            font-family: 'CustomFont5', "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        body.use-font6 {
+            font-family: 'CustomFont6', "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        body.use-system {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
 
         body {
             font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -51,9 +86,10 @@
         }
         body.light-theme .container {
             background: #ffffff;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.02);
         }
-        body.light-theme h1, body.light-theme h2 {
+        body.light-theme h1,
+        body.light-theme h2 {
             color: #00668B;
         }
         body.light-theme .social-btn {
@@ -80,9 +116,9 @@
             color: #1c1b1f;
         }
         body.light-theme .font-option.selected {
-            background: #e6f4ff;
+            background: #00668B;
             border-color: #00668B;
-            color: #00668B;
+            color: white;
         }
         body.light-theme .theme-btn {
             background: #f5f5f7;
@@ -100,8 +136,25 @@
         body.light-theme .close-btn:hover {
             color: #1c1b1f;
         }
-        body.light-theme .social-btn i.fa-github { color: #24292e; }
-        body.light-theme .social-btn i.fa-tiktok { color: #000000; }
+        body.light-theme .social-btn i.fa-github {
+            color: #24292e;
+        }
+        body.light-theme .social-btn i.fa-tiktok {
+            color: #000000;
+        }
+        body.light-theme .settings-nav-btn {
+            color: #4a4852;
+            background: transparent;
+        }
+        body.light-theme .settings-nav-btn:hover {
+            background: #f0f0f5;
+            color: #1c1b1f;
+        }
+        body.light-theme .settings-nav-btn.active {
+            background: #00668B;
+            color: white;
+            border-left-color: #00668B;
+        }
 
         body.dark-theme {
             background-color: #121217;
@@ -109,9 +162,10 @@
         }
         body.dark-theme .container {
             background: #1c1b20;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
         }
-        body.dark-theme h1, body.dark-theme h2 {
+        body.dark-theme h1,
+        body.dark-theme h2 {
             color: #7ad0ff;
             border-left-color: #7ad0ff;
         }
@@ -141,12 +195,17 @@
         }
         body.dark-theme .social-btn i.fa-tiktok {
             color: #ffffff !important;
-            filter: drop-shadow(0 0 1px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.2));
         }
-        body.dark-theme .social-btn i.fa-bilibili { color: #fb7299; }
-        body.dark-theme .social-btn i.fa-weixin { color: #2bdd6e; }
-        body.dark-theme .social-btn i.fa-qq { color: #3ca0f0; }
-        
+        body.dark-theme .social-btn i.fa-bilibili {
+            color: #fb7299;
+        }
+        body.dark-theme .social-btn i.fa-weixin {
+            color: #2bdd6e;
+        }
+        body.dark-theme .social-btn i.fa-qq {
+            color: #3ca0f0;
+        }
         body.dark-theme .settings-toggle-btn {
             background: #2a2a31;
             border-color: #3a3a44;
@@ -205,6 +264,19 @@
         body.dark-theme footer p {
             color: #9e9aa8 !important;
         }
+        body.dark-theme .settings-nav-btn {
+            color: #b7b2bd;
+            background: transparent;
+        }
+        body.dark-theme .settings-nav-btn:hover {
+            background: #2a2a33;
+            color: #e6e1e5;
+        }
+        body.dark-theme .settings-nav-btn.active {
+            background: #00668B;
+            color: white;
+            border-left-color: #00668B;
+        }
 
         .container {
             max-width: 800px;
@@ -217,26 +289,26 @@
         header {
             text-align: center;
             margin-bottom: 32px;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             padding-bottom: 20px;
         }
         body.dark-theme header {
-            border-bottom-color: rgba(255,255,255,0.08);
+            border-bottom-color: rgba(255, 255, 255, 0.08);
         }
         .avatar {
             width: 120px;
             height: 120px;
             border-radius: 24px;
             object-fit: cover;
-            border: 3px solid rgba(0,102,139,0.2);
+            border: 3px solid rgba(0, 102, 139, 0.2);
             margin-bottom: 15px;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+            transition: all 0.3s var(--spring-easing);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
         }
         .avatar:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
             border-color: #00668B;
-            box-shadow: 0 14px 28px rgba(0, 102, 139, 0.2);
+            box-shadow: 0 6px 12px rgba(0, 102, 139, 0.15);
         }
         h1 {
             margin-bottom: 8px;
@@ -294,8 +366,8 @@
             padding: 4px 8px;
         }
         a:active {
-            transform: scale(0.96);
-            background-color: rgba(0,102,139,0.1);
+            transform: scale(0.98);
+            background-color: rgba(0, 102, 139, 0.1);
         }
         .social-grid {
             display: grid;
@@ -312,20 +384,22 @@
             background: #f5f5f7;
             border: 1px solid #e2e2e6;
             font-weight: 550;
-            transition: all 0.2s ease;
+            transition: all 0.2s var(--spring-easing);
             cursor: pointer;
             font-size: 0.9rem;
             border-radius: 14px;
         }
-        .social-btn i, .social-btn img {
+        .social-btn i,
+        .social-btn img {
             font-size: 22px;
             width: 22px;
             height: 22px;
             transition: inherit;
         }
-        .social-btn.pressed, .settings-toggle-btn.pressed {
-            transform: scale(0.96);
-            transition: transform 0.05s;
+        .social-btn.pressed,
+        .settings-toggle-btn.pressed {
+            transform: scale(0.98);
+            transition: transform 0.1s var(--spring-easing);
         }
         .settings-container {
             text-align: center;
@@ -343,8 +417,8 @@
             align-items: center;
             gap: 8px;
             backdrop-filter: blur(2px);
-            transition: all 0.2s;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.2s var(--spring-easing);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
             border-radius: 14px;
         }
         .settings-overlay {
@@ -370,17 +444,19 @@
             left: 50%;
             transform: translate(-50%, -50%) scale(0.96);
             width: 90%;
-            max-width: 420px;
+            max-width: 620px;
+            height: 80vh;
+            max-height: 90vh;
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.25);
-            padding: 24px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             z-index: 999;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1), visibility 0.25s, transform 0.3s ease;
-            max-height: 85vh;
-            overflow-y: auto;
+            transition: opacity 0.25s var(--spring-easing), visibility 0.25s, transform 0.4s var(--spring-easing);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
         .settings-panel.show {
             opacity: 1;
@@ -391,9 +467,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
+            padding: 20px 24px 14px 24px;
             border-bottom: 1px solid #eef2f6;
+            flex-shrink: 0;
         }
         .settings-header h3 {
             margin: 0;
@@ -407,15 +483,92 @@
             font-size: 26px;
             cursor: pointer;
             line-height: 1;
-            transition: transform 0.1s;
+            transition: transform 0.1s var(--spring-easing);
             border-radius: 14px;
             padding: 0 8px;
         }
         .close-btn:active {
-            transform: scale(0.88);
+            transform: scale(0.92);
         }
+
+        .settings-body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .settings-nav {
+            display: flex;
+            flex-direction: row;
+            gap: 6px;
+            padding: 14px 20px 6px 20px;
+            flex-shrink: 0;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .settings-nav::-webkit-scrollbar {
+            display: none;
+        }
+        .settings-nav-btn {
+            flex: 1 0 auto;
+            min-width: fit-content;
+            padding: 10px 16px;
+            border: none;
+            background: transparent;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 550;
+            cursor: pointer;
+            transition: all 0.2s var(--spring-easing);
+            white-space: nowrap;
+            text-align: center;
+            border-left: 3px solid transparent;
+            letter-spacing: -0.2px;
+        }
+        .settings-nav-btn.active {
+            font-weight: 650;
+            background: #00668B;
+            color: white;
+            border-left-color: #00668B;
+        }
+
+        .settings-content-area {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 10px 20px 20px 20px;
+            min-height: 0;
+            position: relative;
+            overscroll-behavior: contain;
+            scroll-behavior: smooth;
+        }
+        .settings-content-area::-webkit-scrollbar {
+            width: 4px;
+        }
+        .settings-content-area::-webkit-scrollbar-thumb {
+            background: #c1c1c9;
+            border-radius: 4px;
+        }
+        body.dark-theme .settings-content-area::-webkit-scrollbar-thumb {
+            background: #3a3a44;
+        }
+
+        .settings-tab-content {
+            display: none;
+            will-change: transform, opacity;
+        }
+        .settings-tab-content.active {
+            display: block;
+        }
+
         .settings-group {
-            margin-bottom: 28px;
+            margin-bottom: 24px;
+        }
+        .settings-group:last-child {
+            margin-bottom: 0;
         }
         .settings-group h4 {
             margin: 0 0 12px 0;
@@ -434,8 +587,13 @@
             border: 1px solid #cbd5e1;
             background: #f1f5f9;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s var(--spring-easing);
             border-radius: 14px;
+        }
+        .theme-btn.active {
+            background: #00668B;
+            color: white;
+            border-color: #00668B;
         }
         .font-options {
             display: grid;
@@ -448,19 +606,15 @@
             font-size: 0.85rem;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s var(--spring-easing);
             border-radius: 14px;
             border: 1px solid #cfcfd9;
             background: #ffffff;
         }
         .font-option.selected {
-            background: #e6f4ff;
+            background: #00668B;
+            color: white;
             border-color: #00668B;
-            color: #00668B;
-        }
-        body.dark-theme .font-option {
-            background: #2a2a31;
-            border: 1px solid #484856;
         }
         .info-box {
             background: #f5f5f7;
@@ -474,7 +628,8 @@
             margin: 8px 0;
             text-align: left;
         }
-        .refresh-btn, .changelog-btn {
+        .refresh-btn,
+        .changelog-btn {
             width: 100%;
             padding: 11px;
             background: #00668B;
@@ -484,17 +639,19 @@
             font-size: 0.9rem;
             margin-top: 12px;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.2s var(--spring-easing);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
             border-radius: 14px;
         }
-        .refresh-btn:active, .changelog-btn:active {
-            transform: scale(0.97);
+        .refresh-btn:active,
+        .changelog-btn:active {
+            transform: scale(0.98);
         }
-        .refresh-btn:hover, .changelog-btn:hover {
+        .refresh-btn:hover,
+        .changelog-btn:hover {
             background: #004c6b;
         }
         footer {
@@ -504,6 +661,41 @@
             padding: 12px 10px 20px;
             opacity: 0.7;
         }
+
+        @media (min-width: 601px) {
+            .settings-panel {
+                max-width: 620px;
+                height: 70vh;
+            }
+            .settings-body {
+                flex-direction: row;
+            }
+            .settings-nav {
+                flex-direction: column;
+                gap: 4px;
+                padding: 16px 8px 16px 16px;
+                flex-shrink: 0;
+                width: 140px;
+                overflow-x: visible;
+                overflow-y: auto;
+            }
+            .settings-nav-btn {
+                flex: 0 0 auto;
+                text-align: left;
+                padding: 12px 14px;
+                border-radius: 12px;
+                border-left: 3px solid transparent;
+                font-size: 0.9rem;
+            }
+            .settings-content-area {
+                padding: 16px 20px 20px 12px;
+                flex: 1;
+            }
+            .settings-header {
+                padding: 20px 24px 14px 24px;
+            }
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 20px;
@@ -526,17 +718,46 @@
                 flex-wrap: wrap;
             }
             .settings-panel {
-                padding: 20px;
+                padding: 0;
                 border-radius: 18px;
+                max-width: 92vw;
+                height: 75vh;
             }
-            .theme-btn, .font-option, .refresh-btn, .changelog-btn, .settings-toggle-btn {
+            .theme-btn,
+            .font-option,
+            .refresh-btn,
+            .changelog-btn,
+            .settings-toggle-btn {
                 border-radius: 12px;
             }
+            .settings-header {
+                padding: 16px 18px 12px 18px;
+            }
+            .settings-nav {
+                padding: 10px 14px 4px 14px;
+                gap: 8px;
+            }
+            .settings-nav-btn {
+                padding: 8px 12px;
+                font-size: 0.82rem;
+                border-radius: 10px;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+            .settings-nav-btn.active {
+                border-bottom-color: #00668B;
+                background: #00668B;
+                color: white;
+            }
+            .settings-content-area {
+                padding: 8px 16px 16px 16px;
+            }
         }
+
         .js-fade-in {
             opacity: 0;
-            transform: translateY(12px);
-            animation: fadeUp 0.65s ease forwards;
+            transform: translateY(6px);
+            animation: fadeUp 0.6s var(--spring-easing) forwards;
         }
         @keyframes fadeUp {
             to {
@@ -546,19 +767,14 @@
         }
         @media (hover: hover) {
             .social-btn:hover {
-                background: rgba(0,102,139,0.06);
-                transform: translateY(-2px);
-                box-shadow: 0 6px 14px rgba(0,102,139,0.12);
+                background: rgba(0, 102, 139, 0.05);
                 border-color: #cbdff2;
             }
             body.dark-theme .social-btn:hover {
                 background: rgba(122, 208, 255, 0.12);
-                transform: translateY(-2px);
-                box-shadow: 0 6px 12px rgba(0,0,0,0.3);
             }
             .settings-toggle-btn:hover {
                 background: #e6f4ff;
-                transform: translateY(-1px);
             }
             body.dark-theme .settings-toggle-btn:hover {
                 background: #2f2f3a;
@@ -567,206 +783,349 @@
     </style>
 </head>
 <body class="light-theme">
-<div class="container js-fade-in">
-    <header>
-        <img src="Picture/profile.jpg" alt="" class="avatar">
-        <h1>旅冬亦</h1>
-        <p class="title">半匹红纱一丈绫华</p>
-    </header>
-    <section>
-        <h2>👋 关于我</h2>
-        <p>你好！我是<strong>旅冬亦</strong>。</p>
-        <p>网站正在<strong>测试</strong>中</p>
-    </section>
-    <section>
-        <h2>💼 经历与技能</h2>
-        <p>🛠️ 规划中</p>
-    </section>
-    <section>
-        <h2>📞 联系方式</h2>
-        <ul class="contact-list">
-            <li><span class="icon">📧</span> 邮箱: 请通过社交媒体或 GitHub 联系</li>
-            <li><span class="icon">📱</span> 电话: 请通过社交媒体或 GitHub 联系</li>
-            <li><span class="icon">💻</span> 仓库: <a href="https://github.com/lxj13533251583" target="_blank">https://github.com/lxj13533251583</a></li>
-            <li><span class="icon">🌐</span> 网站: <a href="https://lxj13533251583.github.io/ldy/" target="_blank">https://lxj13533251583.github.io/ldy</a></li>
-            <li><span class="icon">🏢</span> 国家: 中国</li>
-        </ul>
-    </section>
-    <section>
-        <h2>📱 社交媒体</h2>
-        <div class="social-grid">
-            <a href="https://github.com/lxj13533251583" class="social-btn" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-            <a href="#" class="social-btn wechat-qq" data-type="wechat"><i class="fab fa-weixin" style="color:#07C160;"></i> 微信</a>
-            <a href="#" class="social-btn wechat-qq" data-type="qq"><i class="fab fa-qq" style="color:#12B7F5;"></i> QQ</a>
-            <a href="https://b23.tv/085t3Ls" class="social-btn" target="_blank"><i class="fab fa-bilibili" style="color:#FB7299;"></i> Bilibili</a>
-            <a href="https://m.douyin.com/share/user/MS4wLjABAAAAlRVshehQoPfD1iLNuyq_lnTXK-BZwTqL6ufkQPEWBtYUepkNvIKtBPNWHQ5pMFer" class="social-btn" target="_blank"><i class="fab fa-tiktok"></i> 抖音</a>
-            <a href="https://v.kuaishou.com/JVGv8Fkx" class="social-btn" target="_blank"><img src="icon/kuaishou.png" alt="" style="width:22px;height:22px;"> 快手</a>
-        </div>
-    </section>
-</div>
-
-<div class="settings-container">
-    <button id="settingsToggle" class="settings-toggle-btn">⚙️ 设置</button>
-</div>
-<div id="settingsOverlay" class="settings-overlay"></div>
-<div id="settingsPanel" class="settings-panel">
-    <div class="settings-header">
-        <h3>⚙️ 设置</h3>
-        <button id="closeSettings" class="close-btn">×</button>
+    <div class="container js-fade-in">
+        <header>
+            <img src="Picture/profile.jpg" alt="" class="avatar">
+            <h1>旅冬亦</h1>
+            <p class="title">半匹红纱一丈绫华</p>
+        </header>
+        <section>
+            <h2>👋 关于我</h2>
+            <p>你好！我是<strong>旅冬亦</strong>。</p>
+            <p>网站正在<strong>测试</strong>中</p>
+        </section>
+        <section>
+            <h2>💼 经历与技能</h2>
+            <p>🛠️ 规划中</p>
+        </section>
+        <section>
+            <h2>📞 联系方式</h2>
+            <ul class="contact-list">
+                <li><span class="icon">📧</span> 邮箱: 请通过社交媒体或 GitHub 联系</li>
+                <li><span class="icon">📱</span> 电话: 请通过社交媒体或 GitHub 联系</li>
+                <li><span class="icon">💻</span> 仓库: <a href="https://github.com/lxj13533251583" target="_blank">https://github.com/lxj13533251583</a></li>
+                <li><span class="icon">🌐</span> 网站: <a href="https://lxj13533251583.github.io/ldy/" target="_blank">https://lxj13533251583.github.io/ldy</a></li>
+                <li><span class="icon">🏢</span> 国家: 中国</li>
+            </ul>
+        </section>
+        <section>
+            <h2>📱 社交媒体</h2>
+            <div class="social-grid">
+                <a href="https://github.com/lxj13533251583" class="social-btn" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#" class="social-btn wechat-qq" data-type="wechat"><i class="fab fa-weixin" style="color:#07C160;"></i> 微信</a>
+                <a href="#" class="social-btn wechat-qq" data-type="qq"><i class="fab fa-qq" style="color:#12B7F5;"></i> QQ</a>
+                <a href="https://b23.tv/085t3Ls" class="social-btn" target="_blank"><i class="fab fa-bilibili" style="color:#FB7299;"></i> Bilibili</a>
+                <a href="https://m.douyin.com/share/user/MS4wLjABAAAAlRVshehQoPfD1iLNuyq_lnTXK-BZwTqL6ufkQPEWBtYUepkNvIKtBPNWHQ5pMFer" class="social-btn" target="_blank"><i class="fab fa-tiktok"></i> 抖音</a>
+                <a href="https://v.kuaishou.com/JVGv8Fkx" class="social-btn" target="_blank"><img src="icon/kuaishou.png" alt="" style="width:22px;height:22px;"> 快手</a>
+            </div>
+        </section>
     </div>
-    <div class="settings-group">
-        <h4>🎨 色彩模式</h4>
-        <div class="theme-options">
-            <button class="theme-btn" data-theme="auto">自动</button>
-            <button class="theme-btn" data-theme="light">浅色</button>
-            <button class="theme-btn" data-theme="dark">深色</button>
+
+    <div class="settings-container">
+        <button id="settingsToggle" class="settings-toggle-btn">⚙️ 设置</button>
+    </div>
+    <div id="settingsOverlay" class="settings-overlay"></div>
+    <div id="settingsPanel" class="settings-panel">
+        <div class="settings-header">
+            <h3>⚙️ 设置</h3>
+            <button id="closeSettings" class="close-btn">×</button>
+        </div>
+        <div class="settings-body">
+            <div class="settings-nav" id="settingsNav">
+                <button class="settings-nav-btn active" data-tab="appearance">🎨 外观</button>
+                <button class="settings-nav-btn" data-tab="info">ℹ️ 信息</button>
+                <button class="settings-nav-btn" data-tab="tools">🔧 其它</button>
+            </div>
+            <div class="settings-content-area" id="settingsContentArea">
+                <div class="settings-tab-content active" id="tab-appearance">
+                    <div class="settings-group">
+                        <h4>🎨 色彩模式</h4>
+                        <div class="theme-options">
+                            <button class="theme-btn" data-theme="auto">自动</button>
+                            <button class="theme-btn" data-theme="light">浅色</button>
+                            <button class="theme-btn" data-theme="dark">深色</button>
+                        </div>
+                    </div>
+                    <div class="settings-group">
+                        <h4>✒️ 字体选择</h4>
+                        <div class="font-options" id="fontOptionsInPanel">
+                            <div class="font-option selected" data-font="system">系统默认</div>
+                            <div class="font-option" data-font="font1">MiSans</div>
+                            <div class="font-option" data-font="font2">小米兰亭</div>
+                            <div class="font-option" data-font="font3">HarmonyOS</div>
+                            <div class="font-option" data-font="font4">OPPO Sans</div>
+                            <div class="font-option" data-font="font5">汉仪文黑</div>
+                            <div class="font-option" data-font="font6">汉仪旗黑</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-tab-content" id="tab-info">
+                    <div class="settings-group">
+                        <h4>ℹ️ 状态信息</h4>
+                        <div class="info-box">
+                            <p>🕒 当前时间: <span id="panel-current-time"></span></p>
+                            <p>📅 最后更新: <span id="panel-last-modified"></span></p>
+                            <p>⏳ 站点运行: <span id="uptime"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-tab-content" id="tab-tools">
+                    <div class="settings-group">
+                        <h4>🔧 其它</h4>
+                        <button id="refreshPageBtn" class="refresh-btn">🔄 刷新页面</button>
+                        <button id="gotoChangelog" class="changelog-btn">📋 更新日志</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="settings-group">
-        <h4>✒️ 字体选择</h4>
-        <div class="font-options" id="fontOptionsInPanel">
-            <div class="font-option selected" data-font="system">系统默认</div>
-            <div class="font-option" data-font="font1">MiSans</div>
-            <div class="font-option" data-font="font2">小米兰亭</div>
-            <div class="font-option" data-font="font3">HarmonyOS</div>
-            <div class="font-option" data-font="font4">OPPO Sans</div>
-            <div class="font-option" data-font="font5">汉仪文黑</div>
-            <div class="font-option" data-font="font6">汉仪旗黑</div>
-        </div>
-    </div>
-    <div class="settings-group">
-        <h4>ℹ️ 状态信息</h4>
-        <div class="info-box">
-            <p>🕒 当前时间: <span id="panel-current-time"></span></p>
-            <p>📅 最后更新: <span id="panel-last-modified"></span></p>
-            <p>⏳ 站点运行: <span id="uptime"></span></p>
-        </div>
-        <button id="refreshPageBtn" class="refresh-btn">🔄 刷新页面</button>
-        <button id="gotoChangelog" class="changelog-btn">📋 更新日志</button>
-    </div>
-</div>
-<footer>
-    <div>© <span id="current-year"></span> 旅冬亦 版权所有</div>
-</footer>
+    <footer>
+        <div>© <span id="current-year"></span> 旅冬亦 版权所有</div>
+    </footer>
 
-<script>
-    (function() {
-        const settingsToggle = document.getElementById('settingsToggle');
-        const settingsOverlay = document.getElementById('settingsOverlay');
-        const settingsPanel = document.getElementById('settingsPanel');
-        const closeSettingsBtn = document.getElementById('closeSettings');
+    <script>
+        (function() {
+            const settingsToggle = document.getElementById('settingsToggle');
+            const settingsOverlay = document.getElementById('settingsOverlay');
+            const settingsPanel = document.getElementById('settingsPanel');
+            const closeSettingsBtn = document.getElementById('closeSettings');
 
-        function openSettings() {
-            settingsOverlay.classList.add('show');
-            settingsPanel.classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeSettings() {
-            settingsPanel.classList.remove('show');
-            settingsOverlay.classList.remove('show');
-            document.body.style.overflow = '';
-        }
-        if (settingsToggle) settingsToggle.addEventListener('click', openSettings);
-        if (closeSettingsBtn) closeSettingsBtn.addEventListener('click', closeSettings);
-        if (settingsOverlay) settingsOverlay.addEventListener('click', closeSettings);
-
-        const themeBtns = document.querySelectorAll('.theme-btn');
-        let currentTheme = localStorage.getItem('preferred-theme') || 'auto';
-
-        function setTheme(theme) {
-            document.body.classList.remove('light-theme', 'dark-theme');
-            if (theme === 'light') {
-                document.body.classList.add('light-theme');
-            } else if (theme === 'dark') {
-                document.body.classList.add('dark-theme');
-            } else if (theme === 'auto') {
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                document.body.classList.add(prefersDark ? 'dark-theme' : 'light-theme');
+            function openSettings() {
+                settingsOverlay.classList.add('show');
+                settingsPanel.classList.add('show');
+                document.body.style.overflow = 'hidden';
             }
-            themeBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.theme === theme));
-            localStorage.setItem('preferred-theme', theme);
-            currentTheme = theme;
-        }
-        setTheme(currentTheme);
-        themeBtns.forEach(btn => btn.addEventListener('click', () => setTheme(btn.dataset.theme)));
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-            if (currentTheme === 'auto') setTheme('auto');
-        });
 
-        const fontOptions = document.querySelectorAll('#fontOptionsInPanel .font-option');
-        const savedFont = localStorage.getItem('preferred-font') || 'system';
-        function applyFont(fontKey) {
-            document.body.classList.remove('use-system', 'use-font1', 'use-font2', 'use-font3', 'use-font4', 'use-font5', 'use-font6');
-            if (fontKey === 'system') document.body.classList.add('use-system');
-            else document.body.classList.add(`use-${fontKey}`);
-            fontOptions.forEach(opt => opt.classList.toggle('selected', opt.dataset.font === fontKey));
-            localStorage.setItem('preferred-font', fontKey);
-        }
-        applyFont(savedFont);
-        fontOptions.forEach(opt => opt.addEventListener('click', () => applyFont(opt.dataset.font)));
-
-        function formatTime(date) {
-            const Y = date.getFullYear();
-            const M = (date.getMonth() + 1).toString().padStart(2,'0');
-            const D = date.getDate().toString().padStart(2,'0');
-            const h = date.getHours().toString().padStart(2,'0');
-            const m = date.getMinutes().toString().padStart(2,'0');
-            const s = date.getSeconds().toString().padStart(2,'0');
-            return `${Y}/${M}/${D} ${h}:${m}:${s}`;
-        }
-        const lastModifiedSpan = document.getElementById('panel-last-modified');
-        if (lastModifiedSpan) {
-            lastModifiedSpan.textContent = formatTime(new Date(document.lastModified));
-        }
-        function updateCurrentTime() {
-            const timeSpan = document.getElementById('panel-current-time');
-            if (timeSpan) timeSpan.textContent = formatTime(new Date());
-        }
-        updateCurrentTime();
-        setInterval(updateCurrentTime, 1000);
-
-        const startDate = new Date(2025, 11, 13, 12, 0, 0);
-        function updateUptime() {
-            const now = new Date();
-            let diff = Math.floor((now - startDate) / 1000);
-            const days = Math.floor(diff / 86400);
-            diff %= 86400;
-            const hours = Math.floor(diff / 3600);
-            diff %= 3600;
-            const minutes = Math.floor(diff / 60);
-            const seconds = diff % 60;
-            const uptimeSpan = document.getElementById('uptime');
-            if (uptimeSpan) {
-                uptimeSpan.textContent = `${days}天 ${hours.toString().padStart(2,'0')}时 ${minutes.toString().padStart(2,'0')}分 ${seconds.toString().padStart(2,'0')}秒`;
+            function closeSettings() {
+                settingsPanel.classList.remove('show');
+                settingsOverlay.classList.remove('show');
+                document.body.style.overflow = '';
             }
-        }
-        updateUptime();
-        setInterval(updateUptime, 1000);
+            if (settingsToggle) settingsToggle.addEventListener('click', openSettings);
+            if (closeSettingsBtn) closeSettingsBtn.addEventListener('click', closeSettings);
+            if (settingsOverlay) settingsOverlay.addEventListener('click', closeSettings);
 
-        const refreshBtn = document.getElementById('refreshPageBtn');
-        if (refreshBtn) refreshBtn.addEventListener('click', () => location.reload());
-        const changelogBtn = document.getElementById('gotoChangelog');
-        if (changelogBtn) changelogBtn.addEventListener('click', () => window.open('https://lxj13533251583.github.io/ldy/changelog.html', '_blank'));
+            const navBtns = document.querySelectorAll('.settings-nav-btn');
+            const tabContents = document.querySelectorAll('.settings-tab-content');
+            const contentArea = document.getElementById('settingsContentArea');
+            let activeTabName = 'appearance';
+            let springAnimId = null;
 
-        function addPressEffect(btn) {
-            btn.classList.add('pressed');
-            setTimeout(() => btn.classList.remove('pressed'), 100);
-        }
-        document.querySelectorAll('.social-btn, .settings-toggle-btn').forEach(btn => {
-            btn.addEventListener('touchstart', (e) => addPressEffect(btn));
-            btn.addEventListener('mousedown', (e) => addPressEffect(btn));
-        });
+            function springAnimation(target, initial, velocity, stiffness, damping, mass, onUpdate, onComplete) {
+                let current = initial;
+                let vel = velocity;
+                const step = () => {
+                    const force = -stiffness * (current - target);
+                    const dampingForce = -damping * vel;
+                    const acceleration = (force + dampingForce) / mass;
+                    vel += acceleration * 0.016;
+                    current += vel * 0.016;
+                    if (Math.abs(current - target) < 0.01 && Math.abs(vel) < 0.1) {
+                        onUpdate(target);
+                        if (onComplete) onComplete();
+                        return;
+                    }
+                    onUpdate(current);
+                    springAnimId = requestAnimationFrame(step);
+                };
+                springAnimId = requestAnimationFrame(step);
+            }
 
-        const privacyBtns = document.querySelectorAll('.wechat-qq');
-        privacyBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('🔒 请通过GitHub或社交媒体联系');
+            function animateTabContentIn(tabElement) {
+                if (springAnimId) {
+                    cancelAnimationFrame(springAnimId);
+                    springAnimId = null;
+                }
+                tabElement.style.opacity = '0';
+                tabElement.style.transform = 'translateY(6px)';
+                tabElement.style.display = 'block';
+                const startTime = performance.now();
+                springAnimation(1, 0, 0, 180, 12, 1,
+                    (val) => {
+                        tabElement.style.opacity = val;
+                        tabElement.style.transform = `translateY(${(1 - val) * 6}px)`;
+                    },
+                    () => {
+                        tabElement.style.transform = 'translateY(0)';
+                        tabElement.style.opacity = '1';
+                    }
+                );
+            }
+
+            function switchTab(tabName) {
+                if (activeTabName === tabName) return;
+                tabContents.forEach(tc => {
+                    tc.classList.remove('active');
+                    tc.style.display = 'none';
+                });
+                navBtns.forEach(nb => nb.classList.remove('active'));
+                const targetTab = document.getElementById('tab-' + tabName);
+                const targetNav = document.querySelector('.settings-nav-btn[data-tab="' + tabName + '"]');
+                if (targetTab) {
+                    targetTab.classList.add('active');
+                    animateTabContentIn(targetTab);
+                }
+                if (targetNav) {
+                    targetNav.classList.add('active');
+                }
+                if (contentArea) {
+                    contentArea.scrollTop = 0;
+                }
+                activeTabName = tabName;
+            }
+
+            navBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    if (tabName) switchTab(tabName);
+                });
             });
-        });
 
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    })();
-</script>
+            const contentScrollEl = document.getElementById('settingsContentArea');
+            if (contentScrollEl) {
+                let overscrollY = 0;
+                let overscrollAnimId = null;
+                function applyOverscroll(y) {
+                    contentScrollEl.style.transform = `translateY(${y}px)`;
+                }
+                function resetOverscroll() {
+                    if (overscrollAnimId) cancelAnimationFrame(overscrollAnimId);
+                    springAnimation(0, overscrollY, 0, 200, 14, 1,
+                        (val) => {
+                            overscrollY = val;
+                            applyOverscroll(val);
+                        },
+                        () => {
+                            overscrollY = 0;
+                            applyOverscroll(0);
+                        }
+                    );
+                }
+                contentScrollEl.addEventListener('wheel', (e) => {
+                    const { scrollTop, scrollHeight, clientHeight } = contentScrollEl;
+                    const atTop = scrollTop <= 0;
+                    const atBottom = scrollTop + clientHeight >= scrollHeight - 1;
+                    if ((atTop && e.deltaY < 0) || (atBottom && e.deltaY > 0)) {
+                        e.preventDefault();
+                        overscrollY += e.deltaY * 0.3;
+                        overscrollY = Math.max(-40, Math.min(40, overscrollY));
+                        applyOverscroll(overscrollY);
+                        if (overscrollAnimId) cancelAnimationFrame(overscrollAnimId);
+                        overscrollAnimId = requestAnimationFrame(() => {
+                            resetOverscroll();
+                        });
+                    }
+                }, { passive: false });
+                contentScrollEl.addEventListener('touchstart', () => {
+                    if (overscrollAnimId) cancelAnimationFrame(overscrollAnimId);
+                    overscrollY = 0;
+                    applyOverscroll(0);
+                }, { passive: true });
+            }
+
+            const themeBtns = document.querySelectorAll('.theme-btn');
+            let currentTheme = localStorage.getItem('preferred-theme') || 'auto';
+
+            function setTheme(theme) {
+                document.body.classList.remove('light-theme', 'dark-theme');
+                if (theme === 'light') {
+                    document.body.classList.add('light-theme');
+                } else if (theme === 'dark') {
+                    document.body.classList.add('dark-theme');
+                } else if (theme === 'auto') {
+                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    document.body.classList.add(prefersDark ? 'dark-theme' : 'light-theme');
+                }
+                themeBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.theme === theme));
+                localStorage.setItem('preferred-theme', theme);
+                currentTheme = theme;
+            }
+            setTheme(currentTheme);
+            themeBtns.forEach(btn => btn.addEventListener('click', () => setTheme(btn.dataset.theme)));
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                if (currentTheme === 'auto') setTheme('auto');
+            });
+
+            const fontOptions = document.querySelectorAll('#fontOptionsInPanel .font-option');
+            const savedFont = localStorage.getItem('preferred-font') || 'system';
+
+            function applyFont(fontKey) {
+                document.body.classList.remove('use-system', 'use-font1', 'use-font2', 'use-font3', 'use-font4',
+                    'use-font5', 'use-font6');
+                if (fontKey === 'system') document.body.classList.add('use-system');
+                else document.body.classList.add('use-' + fontKey);
+                fontOptions.forEach(opt => opt.classList.toggle('selected', opt.dataset.font === fontKey));
+                localStorage.setItem('preferred-font', fontKey);
+            }
+            applyFont(savedFont);
+            fontOptions.forEach(opt => opt.addEventListener('click', () => applyFont(opt.dataset.font)));
+
+            function formatTime(date) {
+                const Y = date.getFullYear();
+                const M = (date.getMonth() + 1).toString().padStart(2, '0');
+                const D = date.getDate().toString().padStart(2, '0');
+                const h = date.getHours().toString().padStart(2, '0');
+                const m = date.getMinutes().toString().padStart(2, '0');
+                const s = date.getSeconds().toString().padStart(2, '0');
+                return Y + '/' + M + '/' + D + ' ' + h + ':' + m + ':' + s;
+            }
+            const lastModifiedSpan = document.getElementById('panel-last-modified');
+            if (lastModifiedSpan) {
+                lastModifiedSpan.textContent = formatTime(new Date(document.lastModified));
+            }
+
+            function updateCurrentTime() {
+                const timeSpan = document.getElementById('panel-current-time');
+                if (timeSpan) timeSpan.textContent = formatTime(new Date());
+            }
+            updateCurrentTime();
+            setInterval(updateCurrentTime, 1000);
+
+            const startDate = new Date(2025, 11, 13, 12, 0, 0);
+
+            function updateUptime() {
+                const now = new Date();
+                let diff = Math.floor((now - startDate) / 1000);
+                const days = Math.floor(diff / 86400);
+                diff %= 86400;
+                const hours = Math.floor(diff / 3600);
+                diff %= 3600;
+                const minutes = Math.floor(diff / 60);
+                const seconds = diff % 60;
+                const uptimeSpan = document.getElementById('uptime');
+                if (uptimeSpan) {
+                    uptimeSpan.textContent = days + '天 ' + hours.toString().padStart(2, '0') + '时 ' + minutes.toString()
+                        .padStart(2, '0') + '分 ' + seconds.toString().padStart(2, '0') + '秒';
+                }
+            }
+            updateUptime();
+            setInterval(updateUptime, 1000);
+
+            const refreshBtn = document.getElementById('refreshPageBtn');
+            if (refreshBtn) refreshBtn.addEventListener('click', () => location.reload());
+            const changelogBtn = document.getElementById('gotoChangelog');
+            if (changelogBtn) changelogBtn.addEventListener('click', () => window.open(
+                'https://lxj13533251583.github.io/ldy/changelog.html', '_blank'));
+
+            function addPressEffect(btn) {
+                btn.classList.add('pressed');
+                setTimeout(() => btn.classList.remove('pressed'), 100);
+            }
+            document.querySelectorAll('.social-btn, .settings-toggle-btn').forEach(btn => {
+                btn.addEventListener('touchstart', () => addPressEffect(btn));
+                btn.addEventListener('mousedown', () => addPressEffect(btn));
+            });
+
+            const privacyBtns = document.querySelectorAll('.wechat-qq');
+            privacyBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert('🔒 请通过GitHub或社交媒体联系');
+                });
+            });
+
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        })();
+    </script>
 </body>
 </html>

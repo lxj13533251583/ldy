@@ -1,323 +1,421 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>更新日志 - 旅冬亦</title>
-    <link rel="icon" type="Picture/profile.jpg" href="Picture/profile.jpg">  
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>更新日志 - 旅冬亦的个人网站</title>
+    <link rel="icon" type="image/jpeg" href="Picture/profile.jpg">
     <style>
-     @font-face{
-     font-family: 'MyCustomFont';
-     src: url('Font/小米兰亭Pro.ttf') format('truetype');
-     font-weight: normal;
-     font-style: normal;
-     font-display: swap;
-    }
+        :root {
+            --spring-easing: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
 
-    :root {
-      --bg-color: #f5f5f5;
-      --text-color: #333;
-      --card-bg: white;
-      --date-color: #888;
-      --shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    [data-theme="dark"] {
-      --bg-color: #121212;
-      --text-color: #e0e0e0;
-      --card-bg: #1e1e1e;
-      --date-color: #aaa;
-      --shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: #f5f5f7;
+            color: #1c1b1f;
+        }
 
-    @font-face {
-      font-family: 'MyCustomFont';
-      src: url('Font/MiSans.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-    }
+        body.light-theme {
+            background-color: #f5f5f7;
+            color: #1c1b1f;
+        }
+        body.light-theme h1 {
+            color: #00668B;
+        }
+        body.light-theme .entry {
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.02);
+            color: #1c1b1f;
+        }
+        body.light-theme .entry .date {
+            color: #6f6e77;
+        }
+        body.light-theme .entry:hover {
+            box-shadow: 0 4px 12px rgba(0, 102, 139, 0.1);
+        }
+        body.light-theme .entry strong {
+            color: #1c1b1f;
+        }
+        body.light-theme .nav-btn {
+            background: #00668B;
+            color: white;
+        }
+        body.light-theme .nav-btn:hover {
+            background: #004c6b;
+        }
+        body.light-theme footer {
+            color: #6f6e77;
+        }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 14px;
-      background: var(--bg-color);
-      color: var(--text-color);
-      padding: 0 20px 20px;
-      max-width: 800px;
-      margin: 0 auto;
-      transition: background-color 0.3s, color 0.3s;
-    }
+        body.dark-theme {
+            background-color: #121217;
+            color: #e6e1e5;
+        }
+        body.dark-theme h1 {
+            color: #7ad0ff;
+        }
+        body.dark-theme .entry {
+            background: #252429;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08);
+            color: #e6e1e5;
+        }
+        body.dark-theme .entry .date {
+            color: #b7b2bd;
+        }
+        body.dark-theme .entry:hover {
+            box-shadow: 0 4px 12px rgba(122, 208, 255, 0.15);
+        }
+        body.dark-theme .entry strong {
+            color: #ffffff;
+        }
+        body.dark-theme .nav-btn {
+            background: #00668B;
+            color: white;
+        }
+        body.dark-theme .nav-btn:hover {
+            background: #004c6b;
+        }
+        body.dark-theme footer {
+            color: #9e9aa8;
+        }
 
-    h1 {
-      color: var(--text-color);
-      text-align: center;
-      margin: 30px 0;
-    }
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    footer {
-      text-align: center;
-      margin-top: 50px;
-      color: #999;
-      font-size: 0.9em;
-      border-top: 1px solid #eee;
-      padding-top: 20px;
-    }
+        h1 {
+            text-align: center;
+            margin: 0 0 24px 0;
+            font-weight: 650;
+            letter-spacing: -0.3px;
+            font-size: 1.6rem;
+        }
 
-    .entry {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 10px;
-      box-shadow: var(--shadow);
-    }
+        .entry {
+            padding: 14px 16px;
+            border-radius: 14px;
+            margin-bottom: 10px;
+            transition: transform 0.2s var(--spring-easing), box-shadow 0.2s var(--spring-easing), opacity 0.2s var(--spring-easing);
+            will-change: transform, opacity;
+            opacity: 0;
+            transform: translateY(6px);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .entry.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .entry:hover {
+            transform: translateY(-1px);
+        }
+        .entry .date {
+            font-size: 0.8em;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .entry strong {
+            font-weight: 650;
+        }
+        .entry div {
+            line-height: 1.55;
+        }
 
-    .date {
-      color: var(--date-color);
-      font-size: 0.9em;
-      margin-bottom: 8px;
-    }
+        .nav-btn {
+            display: inline-block;
+            padding: 10px 22px;
+            background: #00668B;
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 550;
+            font-size: 0.9rem;
+            transition: all 0.2s var(--spring-easing);
+        }
+        .nav-btn:active {
+            transform: scale(0.97);
+        }
 
-    a {
-      color: #3498db;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+        footer {
+            text-align: center;
+            font-size: 0.7rem;
+            padding: 20px 0 10px;
+            margin-top: 24px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+        body.dark-theme footer {
+            border-top-color: rgba(255,255,255,0.08);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 16px;
+            }
+            .entry {
+                padding: 12px 14px;
+                border-radius: 12px;
+                margin-bottom: 8px;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>📝 更新日志</h1>
+    <div class="content-wrapper">
+        <h1>📝 更新日志</h1>
 
-<!--
-    ✨ 新增
-    🚀 上线
-    🐛 问题
-    ⚡ 优化
-    🔨 重构
-    ⏪ 回溯
-    📝 更新
-    🔒 安全
-    🔧 修复
-    🌐 语言
-    🤖 测试
-    🗑️ 移除
-    📌 立项
-    ⚙️ 调整
-    💡 注意
-    ⚠️ 警告
-    -->
+        <div class="entry">
+            <div class="date">2026/04/25 13:20:00</div>
+            <div><strong>v1.2.2</strong><br>
+            🔨 重构：设置界面样式分页面显示不同类别，手机端使用顶部标签切换，电脑端使用左侧标签<br>
+            ✨ 新增：iOS风格动效<br>
+            ⚡ 优化：统一设置页面选中按钮的样式为蓝底白字<br>
+            🐛 问题：字体切换失效
+            </div>
+        </div>
 
-  <div class="entry">
-    <div class="date">2026/04/25 13:20:00</div>
-    <div><strong>v1.2.2</strong><br>
-    🔨 重构：设置界面样式分页面显示不同类别，手机端使用顶部标签切换，电脑端使用左侧标签<br>
-    ✨ 新增：iOS风格动效<br>
-    ⚡ 优化：统一设置页面选中按钮的样式为蓝底白字<br>
-    🐛 问题：字体切换失效
+        <div class="entry">
+            <div class="date">2026/04/10 12:00:00</div>
+            <div><strong>v1.2.1</strong><br>
+            ⚡ 修复：恢复简介居中显示
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026/04/10 10:00:00</div>
+            <div><strong>v1.2.0</strong><br>
+            🐛 修复：部分社交媒体图标深色模式下表现异常
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026/04/05 21:00:00</div>
+            <div><strong>v1.1.9</strong><br>
+            ⚡ 优化：最后更新时间加载速度
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026/04/05 20:35:00</div>
+            <div><strong>v1.1.8</strong><br>
+            🚀 上线：设置面板测试完成，正式上线<br>
+            ✨ 新增：网站运行时间<br>
+            ✨ 新增：设置面板展开后背景模糊<br>
+            🐛 修复：深浅色切换<br>
+            ⚡ 优化：隐私联系方式无法跳转提示
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026/04/05 14:35:00</div>
+            <div><strong>v1.1.7</strong><br>
+            🔧 修复：版权信息年份缺失
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026/04/05 14:30:00</div>
+            <div><strong>v1.1.6</strong><br>
+            🤖 测试：设置面板<br>
+            🐛 问题：设置面板按钮无响应<br>
+            🚀 新增：深浅色切换<br>
+            🔧 恢复：更新日志跳转<br>
+            🔨 修复：Safari用户键盘弹出问题<br>
+            ⚡ 优化：部分社交媒体图标加载速度，变更源文件包括样式从仓库至Font Awesome<br>
+            ⚡ 优化：冗余动画代码<br>
+            ⚙️ 调整：切换字体按钮和时间戳移入设置面板
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026/04/04 14:30:00</div>
+            <div><strong>v1.1.5</strong><br>
+            🚀 新增：当前时间和网站最后更新时间<br>
+            ✨ 新增：淡入加载动画<br>
+            ⚡ 优化：移动端触控体验<br>
+            🔧 修复：点击社交媒体按钮跳转后返回网页动画问题<br>
+            🗑️ 移除：邮箱和电话空跳转
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026/03/29 19:10:00</div>
+            <div><strong>v1.1.4</strong><br>
+            🐛 修复：字体选择列表点击问题<br>
+            🚀 转正：字体选择功能
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026/03/22 02:30:00</div>
+            <div><strong>v1.1.3</strong><br>
+            🤖 测试：切换字体功能<br>
+            💡 问题：已知字体切换功能失效<br>
+            💡 问题：字体选择列表未展开状态下仍能点击<br>
+            💡 问题：深色模式在非系统内核显示问题（雨见浏览器无扩展、Edge非强制深色模式）
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026/03/15 20:30:00</div>
+            <div><strong>v1.1.2</strong><br>
+            ✨ 新增：抖音、快手联系方式<br>
+            🐛 修复：Bilibili跳转问题<br>
+            ⚡ 优化：社交媒体图标无源文件时标题导致文字溢出按钮问题
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026/01/18 19:40:00</div>
+            <div><strong>v1.1.1</strong><br>
+            🔒 安全：隐藏了手机号码和邮箱，请使用其它联系方式<br>
+            🚀 更新：网站图标及个人头像<br>
+            🐛 修复：社交媒体图标<br>
+            🐛 问题：社交媒体图标Github显示异常
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026/01/17 19:30:00</div>
+            <div><strong>v1.1.0</strong><br>
+            ✨ 新增：Material You风格的主题色<br>
+            🤖 测试：社交媒体联系方式内容（仅Github跳转有效）<br>
+            ⚡ 优化：头像使用圆角矩形<br>
+            🐛 修复：深色模式异常<br>
+            🐛 修复：联系方式链接换行及缩进优化
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026/01/17 01:30:00</div>
+            <div><strong>v1.0.9</strong><br>
+            🔨 重构：网页字体由小米兰亭Pro替换为MiSans
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026/01/17 01:05:00</div>
+            <div><strong>v1.0.8</strong><br>
+            ⚙️ 调整：头像白色圆框粗细 5px→2.5px
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026/01/10 18:10:00</div>
+            <div><strong>v1.0.7</strong><br>
+            🗑️ 移除：网站内跳转至更新日志的按钮<br>
+            💡 注意：如需查看更新日志请跳转：https://lxj13533251583.github.io/ldy/changelog.html
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2026/1/10 11:35:00</div>
+            <div><strong>v1.0.6</strong><br>
+            ⚙️ 调整：Github、网站链接增加显示“https：//”<br>
+            ⚙️ 调整：联系方式字体改为细体<br>
+            🐛 问题：竖屏显示（移动端）联系方式缩进过大导致文字和链接换行异常
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2025/12/27 09:40:00</div>
+            <div><strong>v1.0.5</strong><br>
+            ⚙️ 调整：网站头像
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2025/12/20 09:00:00</div>
+            <div><strong>v1.0.4</strong><br>
+            ✨ 新增：主页至更新日志跳转按钮
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2025/12/14 00:00:00</div>
+            <div><strong>v1.0.3</strong><br>
+            ⏪ 回溯：样式回归1.0.1
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2025/12/13 23:00:00</div>
+            <div><strong>v1.0.2</strong><br>
+            ✨ 新增：开发更新日志<br>
+            🔨 重构：功能开发过度：侧边栏、底栏、社交媒体链接
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2025/12/13 12:00:00</div>
+            <div><strong>v1.0.1</strong><br>
+            🚀 上线：旅冬亦的网页 https://lxj13533251583.github.io/ldy/ 开始运行
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="date">2025/12/12 00:00:00</div>
+            <div><strong>v1.0.0</strong><br>
+            🎯 立项：旅冬亦的网页开始开发
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 20px 0 10px;">
+            <a href="index.html" class="nav-btn">🌐 前往网站</a>
+        </div>
     </div>
-  </div>
 
-  <div class="entry">
-    <div class="date">2026/04/10 12:00:00</div>
-    <div><strong>v1.2.1</strong><br>
-    ⚡ 修复：恢复简介居中显示
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2026/04/10 10:00:00</div>
-    <div><strong>v1.2.0</strong><br>
-    🐛 修复：部分社交媒体图标深色模式下表现异常
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2026/04/05 21:00:00</div>
-    <div><strong>v1.1.9</strong><br>
-    ⚡ 优化：最后更新时间加载速度
-    </div>
-  </div>
-
-
-  <div class="entry">
-    <div class="date">2026/04/05 20:35:00</div>
-    <div><strong>v1.1.8</strong><br>
-    🚀 上线：设置面板测试完成，正式上线<br>
-    ✨ 新增：网站运行时间<br>
-    ✨ 新增：设置面板展开后背景模糊<br>
-    🐛 修复：深浅色切换<br>
-    ⚡ 优化：隐私联系方式无法跳转提示
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2026/04/05 14:35:00</div>
-    <div><strong>v1.1.7</strong><br>
-    🔧 修复：版权信息年份缺失
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2026/04/05 14:30:00</div>
-    <div><strong>v1.1.6</strong><br>
-    🤖 测试：设置面板<br>
-    🐛 问题：设置面板按钮无响应<br>
-    🚀 新增：深浅色切换<br>
-    🔧 恢复：更新日志跳转<br>
-    🔨 修复：Safari用户键盘弹出问题<br>
-    ⚡ 优化：部分社交媒体图标加载速度，变更源文件包括样式从仓库至Font Awesome<br>
-    ⚡ 优化：冗余动画代码<br>
-    ⚙️ 调整：切换字体按钮和时间戳移入设置面板
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2026/04/04 14:30:00</div>
-    <div><strong>v1.1.5</strong><br>
-    🚀 新增：当前时间和网站最后更新时间<br>
-    ✨ 新增：淡入加载动画<br>
-    ⚡ 优化：移动端触控体验<br>
-    🔧 修复：点击社交媒体按钮跳转后返回网页动画问题<br>
-    🗑️ 移除：邮箱和电话空跳转
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2026/03/29 19:10:00</div>
-    <div><strong>v1.1.4</strong><br>
-    🐛 修复：字体选择列表点击问题<br>
-    🚀 转正：字体选择功能
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2026/03/22 02:30:00</div>
-    <div><strong>v1.1.3</strong><br>
-    🤖 测试：切换字体功能<br>
-    💡 问题：已知字体切换功能失效<br>
-    💡 问题：字体选择列表未展开状态下仍能点击<br>
-    💡 问题：深色模式在非系统内核显示问题（雨见浏览器无扩展、Edge非强制深色模式）
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2026/03/15 20:30:00</div>
-    <div><strong>v1.1.2</strong><br>
-    ✨ 新增：抖音、快手联系方式<br>
-    🐛 修复：Bilibili跳转问题<br>
-    ⚡ 优化：社交媒体图标无源文件时标题导致文字溢出按钮问题
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2026/01/18 19:40:00</div>
-    <div><strong>v1.1.1</strong><br>
-    🔒 安全：隐藏了手机号码和邮箱，请使用其它联系方式<br>
-    🚀 更新：网站图标及个人头像<br>
-    🐛 修复：社交媒体图标<br>
-    🐛 问题：社交媒体图标Github显示异常
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2026/01/17 19:30:00</div>
-    <div><strong>v1.1.0</strong><br>
-    ✨ 新增：Material You风格的主题色<br>
-    🤖 测试：社交媒体联系方式内容（仅Github跳转有效）<br>
-    ⚡ 优化：头像使用圆角矩形<br>
-    🐛 修复：深色模式异常<br>
-    🐛 修复：联系方式链接换行及缩进优化
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2026/01/17 01:30:00</div>
-    <div><strong>v1.0.9</strong><br>
-    🔨 重构：网页字体由小米兰亭Pro替换为MiSans
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2026/01/17 01:05:00</div>
-    <div><strong>v1.0.8</strong><br>
-    ⚙️ 调整：头像白色圆框粗细 5px→2.5px
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2026/01/10 18:10:00</div>
-    <div><strong>v1.0.7</strong><br>
-    🗑️ 移除：网站内跳转至更新日志的按钮<br>
-    💡 注意：如需查看更新日志请跳转：https://lxj13533251583.github.io/ldy/changelog.html
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2026/1/10 11:35:00</div>
-    <div><strong>v1.0.6</strong><br>
-    ⚙️ 调整：Github、网站链接增加显示“https：//”<br>
-    ⚙️ 调整：联系方式字体改为细体<br>
-    🐛 问题：竖屏显示（移动端）联系方式缩进过大导致文字和链接换行异常
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2025/12/27 09:40:00</div>
-    <div><strong>v1.0.5</strong><br>
-    ⚙️ 调整：网站头像
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2025/12/20 09:00:00</div>
-    <div><strong>v1.0.4</strong><br>
-    ✨ 新增：主页至更新日志跳转按钮
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2025/12/14 00:00:00</div>
-    <div><strong>v1.0.3</strong><br>
-    ⏪ 回溯：样式回归1.0.1
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2025/12/13 23:00:00</div>
-    <div><strong>v1.0.2</strong><br>
-    ✨ 新增：开发更新日志<br>
-    🔨 重构：功能开发过度：侧边栏、底栏、社交媒体链接
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2025/12/13 12:00:00</div>
-    <div><strong>v1.0.1</strong><br>
-    🚀 上线：旅冬亦的网页 https://lxj13533251583.github.io/ldy/ 开始运行
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="date">2025/12/12 00:00:00</div>
-    <div><strong>v1.0.0</strong><br>
-    🎯 立项：旅冬亦的网页开始开发
-    </div>
-  </div>
-
-  <footer>
-    <div style="margin-top: 15px; text-align: center;">
-        <a href="index.html" target="_blank" style="display: inline-block; padding: 8px 16px; background: #3498db; color: white; border-radius: 5px; text-decoration: none;">
-            🌐 前往网站
-    </a>
-    </div>
-      <p style="text-align: center;">© <span id="year"></span> 旅冬亦 版权所有</p>
-  </footer>
+    <footer>
+        <p>© <span id="year"></span> 旅冬亦 版权所有</p>
+    </footer>
 
     <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
+        (function() {
+            const theme = localStorage.getItem('preferred-theme') || 'auto';
+            function applyTheme(mode) {
+                document.body.classList.remove('light-theme', 'dark-theme');
+                if (mode === 'light') {
+                    document.body.classList.add('light-theme');
+                } else if (mode === 'dark') {
+                    document.body.classList.add('dark-theme');
+                } else if (mode === 'auto') {
+                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    document.body.classList.add(prefersDark ? 'dark-theme' : 'light-theme');
+                }
+            }
+            applyTheme(theme);
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                const current = localStorage.getItem('preferred-theme') || 'auto';
+                if (current === 'auto') applyTheme('auto');
+            });
+
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            const entries = document.querySelectorAll('.entry');
+            const observer = new IntersectionObserver((entriesObs) => {
+                entriesObs.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+
+            entries.forEach(entry => observer.observe(entry));
+        })();
     </script>
 </body>
 </html>

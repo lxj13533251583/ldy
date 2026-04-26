@@ -1,4 +1,4 @@
-# 🌐 旅冬亦的个人网站
+# <img src="https://lxj13533251583.github.io/ldy/Picture/profile.jpg" width="25" align="center"> 旅冬亦的个人网站
 
 欢迎访问我的个人网站！这是一个展示个人信息、动态主题和交互体验的静态网页项目。  
 网站支持深色/浅色主题切换、自定义字体、实时运行时长统计，并包含完整的设置面板与更新日志。
@@ -97,13 +97,15 @@
 本网页支持打包为 **Android APK**，提供两种类型：
 
 - **在线版 Online**：网页映射至软件，内容与网站同步更新（已弃用）
-- **离线版 Offline**：打包网页源文件至软件，可离线查看，更新需重新下载
-  👉 [前往下载](https://github.com/lxj13533251583/ldy/releases/)
+- **离线版 Offline**：打包网页源文件至软件，可离线查看，更新需重新下载（构建中）
+
+## 🔗源码
+
+- 👉 [前往下载](https://github.com/lxj13533251583/ldy/releases/)
 
 ## 📝 更新日志
 
-查看完整版本记录与变更：
-[ChangeLog](https://lxj13533251583.github.io/ldy/changelog.html)
+- [ChangeLog](https://lxj13533251583.github.io/ldy/changelog.html)
 
 ## ⚠️ 声明
 

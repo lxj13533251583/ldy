@@ -1,35 +1,35 @@
-# <img src="https://lxj13533251583.github.io/ldy/Picture/profile.jpg" width="25" align="center"> 旅冬亦的个人网站
+# <img src="https://ldy2330785100.github.io/ldy/Picture/profile.jpg" width="25" align="center"> 旅冬亦的个人网站
 
 欢迎访问我的个人网站！这是一个展示个人信息、动态主题和交互体验的静态网页项目。  
 网站支持深色/浅色主题切换、自定义字体、实时运行时长统计，并包含完整的设置面板与更新日志。
 
 <div>
-  <a href="https://github.com/lxj13533251583/ldy/blob/main/LICENSE">
+  <a href="https://github.com/ldy2330785100/ldy/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue" alt="License">
   </a>
-  <a href="https://lxj13533251583.github.io/ldy/">
+  <a href="https://ldy2330785100.github.io/ldy/">
     <img src="https://img.shields.io/badge/website-live-brightgreen" alt="Website">
   </a>
   <br>
-  <a href="https://github.com/lxj13533251583/ldy/stargazers">
-    <img src="https://img.shields.io/github/stars/lxj13533251583/ldy" alt="GitHub stars">
+  <a href="https://github.com/ldy2330785100/ldy/stargazers">
+    <img src="https://img.shields.io/github/stars/ldy2330785100/ldy" alt="GitHub stars">
   </a>
-  <a href="https://github.com/lxj13533251583/ldy/commits/main">
-    <img src="https://img.shields.io/github/last-commit/lxj13533251583/ldy" alt="GitHub last commit">
+  <a href="https://github.com/ldy2330785100/ldy/commits/main">
+    <img src="https://img.shields.io/github/last-commit/ldy2330785100/ldy" alt="GitHub last commit">
   </a>
-  <a href="https://github.com/lxj13533251583/ldy/releases">
-    <img src="https://img.shields.io/github/v/release/lxj13533251583/ldy" alt="GitHub release">
+  <a href="https://github.com/ldy2330785100/ldy/releases">
+    <img src="https://img.shields.io/github/v/release/ldy2330785100/ldy" alt="GitHub release">
   </a>
-  <a href="https://github.com/lxj13533251583/ldy/releases">
-    <img src="https://img.shields.io/github/release-date/lxj13533251583/ldy" alt="Release date">
+  <a href="https://github.com/ldy2330785100/ldy/releases">
+    <img src="https://img.shields.io/github/release-date/ldy2330785100/ldy" alt="Release date">
   </a>
-  <a href="https://github.com/lxj13533251583/ldy">
-    <img src="https://img.shields.io/github/repo-size/lxj13533251583/ldy" alt="Repo size">
+  <a href="https://github.com/ldy2330785100/ldy">
+    <img src="https://img.shields.io/github/repo-size/ldy2330785100/ldy" alt="Repo size">
   </a>
-  <a href="https://github.com/lxj13533251583/ldy/commits/main">
-    <img src="https://img.shields.io/github/commit-activity/m/lxj13533251583/ldy" alt="Commit activity">
+  <a href="https://github.com/ldy2330785100/ldy/commits/main">
+    <img src="https://img.shields.io/github/commit-activity/m/ldy2330785100/ldy" alt="Commit activity">
   </a>
-  <a href="https://github.com/lxj13533251583/ldy">
+  <a href="https://github.com/ldy2330785100/ldy">
     <img src="https://img.shields.io/badge/Maintenance-Active-brightgreen" alt="Maintenance">
   </a>
 </div>
@@ -101,11 +101,11 @@
 
 ## 🔗源码
 
-- 👉 [前往下载](https://github.com/lxj13533251583/ldy/releases/)
+- 👉 [前往下载](https://github.com/ldy2330785100/ldy/releases/)
 
 ## 📝 更新日志
 
-- [ChangeLog](https://lxj13533251583.github.io/ldy/changelog.html)
+- [ChangeLog](https://ldy2330785100.github.io/ldy/changelog.html)
 
 ## ⚠️ 声明
 
